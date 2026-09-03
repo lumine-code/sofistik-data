@@ -1,0 +1,15 @@
+node_modules/
+coverage/
+*.err
+*.log
+npm-debug.log*
+build/[0-9]*/
+build/extracted/
+build/__pycache__/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

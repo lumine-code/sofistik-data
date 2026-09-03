@@ -1,0 +1,52 @@
+{
+  "name": "@lumine-code/sofistik-data",
+  "author": "lumine-code",
+  "version": "1.0.0",
+  "description": "Provides versioned SOFiSTiK CADINP command and schema data.",
+  "keywords": [
+    "sofistik",
+    "cadinp",
+    "structural-analysis",
+    "finite-element",
+    "schema",
+    "keywords"
+  ],
+  "repository": "https://github.com/lumine-code/sofistik-data",
+  "bugs": {
+    "url": "https://github.com/lumine-code/sofistik-data/issues"
+  },
+  "homepage": "https://github.com/lumine-code/sofistik-data#readme",
+  "license": "MIT",
+  "private": true,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "commands",
+    "lib",
+    "schema"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "npm@11.16.0",
+  "scripts": {
+    "generate": "node scripts/generate-data.js && prettier --write commands schema",
+    "check:generated": "node scripts/check-generated.js",
+    "check:format": "prettier --check .",
+    "test:node": "node --test test/*.test.js",
+    "test:python": "python -m unittest discover -s build -p \"test_*.py\"",
+    "test": "npm run lint && npm run check:format && npm run check:generated && npm run test:node && npm run test:python",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^18.3.0",
+    "globals": "^17.11.0",
+    "prettier": "^3.9.6"
+  }
+}

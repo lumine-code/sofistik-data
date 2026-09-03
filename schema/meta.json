@@ -1,0 +1,2242 @@
+{
+  "formatVersion": 1,
+  "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
+  "languages": ["de", "en"],
+  "sourceModuleAliases": {
+    "DBIN": "DBINFO",
+    "MAXI": "MAXIMA",
+    "TEMP": "TEMPLATE"
+  },
+  "publicModuleAliases": {
+    "DBMERG": "DBME",
+    "STAR2": "STAR",
+    "TUNARS": "TUNA"
+  },
+  "provenance": {
+    "source": "Installed SOFiSTiK .err catalogues",
+    "rawCataloguesIncluded": false,
+    "releases": {
+      "2018": {
+        "release": "2018",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 81172,
+            "sha256": "ffa8869d9eafdb5effced71ea58bd2d14ef79b40a788a24566feb3f7bdd33c4a",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 76026,
+            "sha256": "8e2c5517ff8e65605f0fee784e5668091fae4166f3c0a9675358101d5d5165ee",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 245080,
+            "sha256": "3079af63b5bd5c71114a73b43db63de13ba71db93f6dd14183742a86ef5f3889",
+            "catalogueVersion": "181050"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 35731,
+            "sha256": "db465e87e8c6c3c29229c5527af11b2abc6984cb5e025e5d122f61fc42df7ef1",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 35206,
+            "sha256": "f3c4119860ae1df3f7503933e8f6a2c61ff074395f2ed10bf9dc66524ed997a5",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 190132,
+            "sha256": "408e410a1a9461db00ef7456ceeffd77dd10b6037b2f9a7e6870b8abd5795f57",
+            "catalogueVersion": "181050"
+          },
+          {
+            "file": "column.err",
+            "bytes": 19770,
+            "sha256": "36594492385fb7bf482857a5296f86b4a0c4f32fe51dd1ce735e39dfe35fdd8d",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108930,
+            "sha256": "600f94eb4ceb7049e57b104ae18a7030b706fb86d119b27bf1176a0fb4253eb2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csm.err",
+            "bytes": 98937,
+            "sha256": "9f4d684525e949066d0a9cc73bd3963e08c2598a67b942097fd45c476556a2fb",
+            "catalogueVersion": "181050"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2155,
+            "sha256": "3a7565323c136ac7cceb3ec2099f2290674c55f3fa6ff312b8b51f2bfc99f647",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7384,
+            "sha256": "b2e1b7d0a0a34f3e2e82cb37f7b38092eb03de61913de6fbe12bdd67999c3cb0",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27016,
+            "sha256": "96fa6b6e5a5ec88e3c8958163ed8b231e2464ea95b5cbffb2f150515fd5ea22a",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 1408,
+            "sha256": "41c104b1d8d527b3f61abf935f746354a211917f0ac937576c8a905c93ecdfc1",
+            "catalogueVersion": "180350"
+          },
+          {
+            "file": "design.err",
+            "bytes": 1436,
+            "sha256": "9bc5466e9ce3b804e3b7d962041e02ed3223f9aaf0f77267716809f3c1d5808f",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 14816,
+            "sha256": "4e7412da30cdfc238813153acef91dbee4940851fb65ec199102ed412e0013a2",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4328,
+            "sha256": "5742a5aeb976e3dbe14174b9d269b6563755c7c6e16b8fa701b10e48abe39829",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1098,
+            "sha256": "8602f2276c2cc00ac2fa13ede99e88a44269d123ed144713a36b52e10233d519",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38236,
+            "sha256": "d32e8e4c1adbf20099907a96098d38f9a364d42c737eb3e4c0f5c03ee1fd22a0",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14451,
+            "sha256": "06fdc122bbfcf4ddfba07cb182f13ec2963e4e9ea003d03b1c8ebe7451659222",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 34401,
+            "sha256": "942009e89de12377bcba770b7b61e2f1e2371c88a78650b996733eb4ea329770",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "fea_elements.err",
+            "bytes": 4884,
+            "sha256": "c53e42cc0b0602b48d46ad12be9d3017406f5cdb163dead5b078afc9240d75ee",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "638897dc5ec9d8b01e0df8968b3e13bba83caac406393fb911a7cbc3264265b0",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6705,
+            "sha256": "bd2090b40c8e38e220b732d3675bb2e498f382fee98fda10be591ddffa0988f1",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 29144,
+            "sha256": "7c06678a4c52fd1b423af964196e7dd2dc14eb9fb288de321ad2d8d9b577df55",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18352,
+            "sha256": "e24c818c00652823b01eb9037728891e2e3fc86a29f136ec10d0c352f25ef2e0",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 25565,
+            "sha256": "d002b7f9a6419ab9d68b6d205f875237c7316f7eb73b93873457919f21956182",
+            "catalogueVersion": "191250"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 1124,
+            "sha256": "871a2dd5e56098876e069738de7af72b90be634d43ad46148d5b9d2219e0f07c",
+            "catalogueVersion": "150570"
+          },
+          {
+            "file": "plbconverter_texts.err",
+            "bytes": 704,
+            "sha256": "a9ed8ff17ff086393915e92911a5b6fba4d8ea387631ef48f4ca20656740a315",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 22955,
+            "sha256": "836277eed16b0c3d5ff3f9d274d546104ea5f8df8ce2e805ba8143f11f279fca",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 147062,
+            "sha256": "025c3497206ed3fe9ede7e2c3b079f746411cb6c1e56753bb1ec998a3c4d118c",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9426,
+            "sha256": "b7959206c62d1c1c702ce5d810913b36bcac401cc611a9f32d444ae1d1afadd3",
+            "catalogueVersion": "150650"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 68614,
+            "sha256": "ebfe51f41bebcb111d2475fe429613488a0ed5c6631696eb43b0b52a1239aca0",
+            "catalogueVersion": "171950"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 48643,
+            "sha256": "60f1b689f37d0d6f02dbb1e70553f682d9b360b8d5342b2df86ed073771c21bd",
+            "catalogueVersion": "191150"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 62044,
+            "sha256": "99ea6273f8d4ecf7f7283eb8e8d48fc0fbb500407c02efa484752e93ed360dc1",
+            "catalogueVersion": "181250"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 222297,
+            "sha256": "a3c3ee58f16f6eafcbce7301afbfddb5c273af0750268a0ffd8d361fee7a531d",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 96044,
+            "sha256": "f99a40b6d576c95940651868dd9157b8134b84b09477107c0eef3c9338fc4d14",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 40648,
+            "sha256": "f0f9f1594b61240e2bdad2e9534baa3ae33c524e82f0b54e21648bc5533cf6e9",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48172,
+            "sha256": "57767085e7c1cdcac1c048d19e84d13bbfb09a9108d348a61d959ba83658f837",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 2346,
+            "sha256": "824dae0a11e57f1204fe026d56816dc34e47f7252112ef2b5f26582ddb0c3c71",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 148061,
+            "sha256": "bb83677d0e42eb4b7b13d31f6b0d2a0b69c148a9ef813432c7921a5decdd52d5",
+            "catalogueVersion": "180850"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 11509,
+            "sha256": "05c57d136ec7c969e584bac20c9db02694928222bb9b6d04f7f3b998d3f6d9bc",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1736,
+            "sha256": "8f7f0d5623fac930d8895bb569c834dc6ae600a65b62b5ee5e83dec46dfd5f97",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 192371,
+            "sha256": "08348e4526530efb57f2a6793d167c7655b2a53b97bc344f352a113a1943ecc0",
+            "catalogueVersion": "191250"
+          }
+        ]
+      },
+      "2020": {
+        "release": "2020",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 85677,
+            "sha256": "c2e0accc33d0dde957ba0ae370cbc2e3ab1872fdc9c931b99341c2337521820c",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 82872,
+            "sha256": "521817a847ce45fe103d4a17700b31a406396bc8fb4b11362e6033a694b670f0",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 268898,
+            "sha256": "a94e7d18b1956fb94d92d834ce6ccb021993c05dffb776e8c38600f6ee5c1f74",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 37617,
+            "sha256": "a258c9714de3c5627a230b49eda54fee02156075ccc21334da8e468592f8455f",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 36280,
+            "sha256": "51fef18d8052d5a2f6c5ce2d85a324b348f8bcb37350e5a36fa5d421ba1ed6d6",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 202835,
+            "sha256": "41c421f289c4da19255fd6de799d30410379442a4d515e1184e80f6b1b6863e5",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 21279,
+            "sha256": "c2712bb12618f8f6734b20e8e96217edd27a705fa0bdff5e129ae15fb537898c",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "comb_test_texts.err",
+            "bytes": 127,
+            "sha256": "fad5e9359b229376d496c9a31eb989471702215ce252a4e91252a270ae31cee7",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108930,
+            "sha256": "600f94eb4ceb7049e57b104ae18a7030b706fb86d119b27bf1176a0fb4253eb2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csm.err",
+            "bytes": 134779,
+            "sha256": "1dd81bfe0e6908963e72f2e7b6318bf0259374570e3a7277d7605c6dc4496db1",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2158,
+            "sha256": "37ce262539d328503e41783c1bf0934fa5d702440551ef8537c143b1e04d2b38",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7393,
+            "sha256": "36145560915b6e4f40fb89624d2b842100c44d83dd9d961971be32dc8443221f",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27078,
+            "sha256": "fb4c86811212dcd75f9a62bc39f445ba298b6941447fd81fd858d16213d2abe2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2057,
+            "sha256": "01332e7aa0ee2cfb5d5b4400d3202997116c851bc5f449ac126ce3201436c442",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 1761,
+            "sha256": "f5bdcfa0623050db432df33fd95373e3752ea623e6eede36b357420831219aef",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 18772,
+            "sha256": "84318357aec79974bffddbf02155401080a8b970776d4cb00b57ddac591e8e8d",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4373,
+            "sha256": "dad9958535d561d322e1e06dc571e0f70092d0bd1fecd1fd1f10e741a3d4a97e",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38313,
+            "sha256": "14b22709845c9e083a0bd42c6a2c6482d87c481b113d667e65155ee875b499f6",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14498,
+            "sha256": "13110de1ebbc6723d7b0e71dae4ae46db9c0473c9b40f7ae0ec742a4fe5b2eea",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 35163,
+            "sha256": "5c6162c6af3d8b6e0db8d345b12af72b5e393126d2fa54cd4aba8b2b33978465",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "fea_elements.err",
+            "bytes": 7594,
+            "sha256": "72a1d397d8bc456ff4520ac986e1a2d87ee55dc5f0dc4994d7f20f58821b79be",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 2197,
+            "sha256": "06485b7861b79d827002f789361041ab44b54d2feb08d5422c1feb8d7d8b759c",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 31970,
+            "sha256": "f33999bf7a920c51b764cfb7de61e5eee0e5dc019280a28766af424e3a102a10",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 28275,
+            "sha256": "4007b5ce6c4f719391bfc60d67e494d0e024d35901a38fee78924e94c9d2aecf",
+            "catalogueVersion": "201370"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2621,
+            "sha256": "6263811648904c7f00aeaaea9efe7af0e73edfc3e1718fb55ce0e01887ceaddf",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "plbconverter_texts.err",
+            "bytes": 2066,
+            "sha256": "8579ae1e40a130e2854cd4a0f280a82ed34a176b557302c8a38fb01bda93f525",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 148889,
+            "sha256": "eb592db09afbcf864545b68661081d634af5057df5e52b11fa0cb6286af41b8a",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9475,
+            "sha256": "b45554eb6ddc7cfb15601966e686db3cc7137994fe39f2bd63ce1d1e6ea9d60f",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 69637,
+            "sha256": "1444744543d190fa7469af4fcf8e393ca859abd6af13648b46d75b55a2c7ada2",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 46397,
+            "sha256": "a3c786c03b4a55d2f6765d71a82e5b59c10eca35ca8e6abc66d1fbfeeb98adc1",
+            "catalogueVersion": "201370"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 62786,
+            "sha256": "22586205f14a4520b070cbf86f6046be402ffa4d07e7967e1b2a59ea26fe5465",
+            "catalogueVersion": "201270"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 225964,
+            "sha256": "6450eb4695aed20d42ad652845bd788f2f875a8350c0084402e61665e1236218",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 97162,
+            "sha256": "14ace6ef79146de17692e2febd480644f625eeb0deda31316d5be912957298eb",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41072,
+            "sha256": "7ef03184fa7aa9e60ba7c08e930dd8dd2be5d8c9e75003a94dfc07fb28e9f9f0",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48172,
+            "sha256": "57767085e7c1cdcac1c048d19e84d13bbfb09a9108d348a61d959ba83658f837",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 2369,
+            "sha256": "4822367051fe23c685edfb939ace3ac60a52105e73b05e758a08b4eee538a3f9",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 148958,
+            "sha256": "aed725f80d9fc4886a2aeeb05d065f778187ca255dff00077dd8dd28c25df1a8",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 11713,
+            "sha256": "82df3a29e1f29039fcbab2857bf5547aa7f7db232aa4c5e570b72b64613ef068",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 189827,
+            "sha256": "25ec161323fb5ba15cf4b424d699553c1c158d9ceb77b0b714a50392b6473af5",
+            "catalogueVersion": "201170"
+          }
+        ]
+      },
+      "2022": {
+        "release": "2022",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 87135,
+            "sha256": "a2a50aa92549eaa6251c3303af2dc3e5931ed41ed7c17794bf0773a409f13e21",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 84698,
+            "sha256": "8c5609fa9adb952f9176859b7167ccb3c5b455d3db533c0d66a547c71d1f5a6b",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 280675,
+            "sha256": "547812a06342d449dcb8647761c36cd560d43f56329b637aa4a50b80c0380771",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 37639,
+            "sha256": "62ec8d65b0cdac0c9c4f7b137bcdc6998c35792bf654d33950f01ab08a46b04d",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 36401,
+            "sha256": "5fe784bafd99e96f46d0038dd555eb8bacc6a62656d3c34e60d1644134e37542",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 206351,
+            "sha256": "72445d406ca7e1c20cf44696112d867870510bf9e0a56d7b036ac4e47678f90f",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 21709,
+            "sha256": "5362295752ac35135abfbafb53cda1145e64067eef4153cfc92efeae29216f55",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108930,
+            "sha256": "600f94eb4ceb7049e57b104ae18a7030b706fb86d119b27bf1176a0fb4253eb2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csm.err",
+            "bytes": 141504,
+            "sha256": "d69f34e46191b010ccd00b5538283d680a72653a549a1ffeb4b88b061fc53413",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2158,
+            "sha256": "37ce262539d328503e41783c1bf0934fa5d702440551ef8537c143b1e04d2b38",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7393,
+            "sha256": "36145560915b6e4f40fb89624d2b842100c44d83dd9d961971be32dc8443221f",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27078,
+            "sha256": "fb4c86811212dcd75f9a62bc39f445ba298b6941447fd81fd858d16213d2abe2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2133,
+            "sha256": "bb33cbd7534e57abcf4718ea1f5599994f9c7dd54d36fa79339a300581e9f231",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 1832,
+            "sha256": "9e1110b91b31d9e9f2e66b9bde5986bdf773943b7b78ddacffd38883f5b54147",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 24767,
+            "sha256": "7079eb2a8f3da433d4bfad6b48d4b05484b840f15205e77f37e77ecec5aef601",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4373,
+            "sha256": "dad9958535d561d322e1e06dc571e0f70092d0bd1fecd1fd1f10e741a3d4a97e",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38518,
+            "sha256": "f900a237c6bbb1779051ef5e001d2b9ab49898dcfbdf62a8fe75dfae02a7272b",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14502,
+            "sha256": "20083be16d09f4b7203a20af7a8c4b00665b411954cbec6cafdb0965771e1d33",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 35189,
+            "sha256": "6f20ecd779cfcbd8d11e3b19b7c7bf28136e7670ca69dbc79c4fdd8928d3cd3a",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 2799,
+            "sha256": "8388dc390b9041e4d87bd4747af74b0f0c48ea88eaf097cbb8726a88f4eb5d0a",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "feacheck.err",
+            "bytes": 7448,
+            "sha256": "af6707022acac52d36f20c435f501c59bf64b34a69101039f2812823b862b3ba",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 32152,
+            "sha256": "1a7364ea7282b33ab2161e4d958e7638494426ebf92c613097e681d927bc840b",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 28624,
+            "sha256": "a9d5b54a488fbc1329020001285d35d901b8d1f5703dd31a4ef1fb5d5c7d0a34",
+            "catalogueVersion": "220570"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2188,
+            "sha256": "92895ef65431a7c64e9ea06d45161dd8916200226f7a8e3fb44fb930bb5f4ece",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 152936,
+            "sha256": "2058d98964e80feb885267121ce090525209b9dfbca2bcfd694d34f58e5482cf",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "shearwall.err",
+            "bytes": 12833,
+            "sha256": "2f278273529056dfe8e8dea67dbb3f2595644c1057625c80bd412d6a38018d12",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9475,
+            "sha256": "b45554eb6ddc7cfb15601966e686db3cc7137994fe39f2bd63ce1d1e6ea9d60f",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sof_fea_analysis.err",
+            "bytes": 12281,
+            "sha256": "201f5fd0fccb6a325e26815ea46bf6d9a1675edac5c08fd3966496401ea0f609",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_check.err",
+            "bytes": 12247,
+            "sha256": "a26fc83a25b640130d10947c57efbd2486021310f1f314069749c51c620e4e80",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 69793,
+            "sha256": "3bd9170ecb2d4eb204f3300fb725a15d0ac14fe05f5aa43be1a7ff7c9e19da38",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 46696,
+            "sha256": "b26457ffc35c7920fe7597ddcae6dc43cb57bccd3b22fb8a93345ccb19ace852",
+            "catalogueVersion": "220370"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 64096,
+            "sha256": "623682468a627336252fe1778ec6eb337dd1e96ed8bb9d72a01e1a3f77f8595c",
+            "catalogueVersion": "220870"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 228224,
+            "sha256": "7f2234afa50fde189ddd80d9422338614937cd02557c2935dfa8b4cc9cd17098",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 97635,
+            "sha256": "a4116bc8a5a77c008683061b4e1671fcfa02589d7f485d99184d9b8bf4ae6949",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41054,
+            "sha256": "de6871e53ea96cd299c158f9b3fc4a5f3b83f8b779c248a9113df14b286c7ee6",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48172,
+            "sha256": "57767085e7c1cdcac1c048d19e84d13bbfb09a9108d348a61d959ba83658f837",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 962,
+            "sha256": "b1367187c419151d2ac1f96d4600499bd339d65b26c789d83694cb89b9f2aaad",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 153216,
+            "sha256": "1c3cdc45dbdaed85ef7439a75e82305a1410eb23334fc80daf406495b81af881",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 12490,
+            "sha256": "acf3f30380bf50316bc02ab95b007ef62e000b257e9eba0ec42edb316069d7c0",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 190617,
+            "sha256": "9a8becb6f829283d2f1818e1f674cd4f7e1b4c33fae54870eccc0e9245e04243",
+            "catalogueVersion": "210922"
+          }
+        ]
+      },
+      "2023": {
+        "release": "2023",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 88192,
+            "sha256": "f3fd4eb5def5b2f8e1eeb46016513a732cb489d561c005287a1eea21afe544be",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 86973,
+            "sha256": "19d7c9400b1d784166a0809d954324a7e30cc4a2d2e0a3a4f8fb0c59acc50da7",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 292872,
+            "sha256": "8656b88c60f3cb5a8df86ddc258f3186683dd625a7c807de5b8f4e3f0fdb7501",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 38667,
+            "sha256": "f00241531d269f9f4306174ebefc8f5837527d35339e5287cc1a8eb53a0f4c86",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 36402,
+            "sha256": "b398e1d40cfeaa30d91c8c9dc3edcca4eb0f54b029f8114af84b601373d44ad5",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 219917,
+            "sha256": "3f75c0c5e94bd6afd722094406b1926cdf1a6d07db81bb471525d4ebed6a1210",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 21749,
+            "sha256": "8d3e50b1ff93c0226ec11e90d35bde2384677f3a578df99cbcceb416127b6d76",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108930,
+            "sha256": "600f94eb4ceb7049e57b104ae18a7030b706fb86d119b27bf1176a0fb4253eb2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csa.err",
+            "bytes": 1714,
+            "sha256": "1f607ee9c1c898207445d4ce6eebd988e0502268fcc1e412f817fd75aead735f",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "csm.err",
+            "bytes": 145323,
+            "sha256": "669d6b8e0a18f28c7e6864d47aeefe1b394bdf7d36472b58ac2f0d088e895625",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2158,
+            "sha256": "37ce262539d328503e41783c1bf0934fa5d702440551ef8537c143b1e04d2b38",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7393,
+            "sha256": "36145560915b6e4f40fb89624d2b842100c44d83dd9d961971be32dc8443221f",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27078,
+            "sha256": "fb4c86811212dcd75f9a62bc39f445ba298b6941447fd81fd858d16213d2abe2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2167,
+            "sha256": "3d99d2546507b2b26d8ba6f26b5e990f4e80fe9b7c42e3b64cf5d02720ef035a",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 1832,
+            "sha256": "9e1110b91b31d9e9f2e66b9bde5986bdf773943b7b78ddacffd38883f5b54147",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 27815,
+            "sha256": "04b428040459f5109ddaff19bdfdea19c2252a35d44a35bf511292b35dddea0e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4373,
+            "sha256": "dad9958535d561d322e1e06dc571e0f70092d0bd1fecd1fd1f10e741a3d4a97e",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38529,
+            "sha256": "147f25e1a4cd35e632ea990506e3131f77e401c099155a6b44cc46edabd22543",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14502,
+            "sha256": "20083be16d09f4b7203a20af7a8c4b00665b411954cbec6cafdb0965771e1d33",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 36931,
+            "sha256": "8a5fd7e5bca0172cf76383146d365e16c4fb305b9e12692d74981bd64e1a7acf",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 4329,
+            "sha256": "2d969da6ff63591cf02cd3540abf98c6a4ea9c2a57277aac7a609ac21f996ee9",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "feacheck.err",
+            "bytes": 7448,
+            "sha256": "af6707022acac52d36f20c435f501c59bf64b34a69101039f2812823b862b3ba",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 32152,
+            "sha256": "1a7364ea7282b33ab2161e4d958e7638494426ebf92c613097e681d927bc840b",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 29371,
+            "sha256": "fa911cba91c483d97594e8a516d74391c91c42723d3f2a0ecc882f05ae8ad48c",
+            "catalogueVersion": "230970"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2188,
+            "sha256": "92895ef65431a7c64e9ea06d45161dd8916200226f7a8e3fb44fb930bb5f4ece",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 153885,
+            "sha256": "14fab9d22ba98e1fc9f3e7534b9269c9ea6b6ae0e5462d1a371d8db0edb2e10a",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "saf_export.err",
+            "bytes": 925,
+            "sha256": "a20750eac7e6ccbcef75b70e1e69c817487e5e668dec31207b4649bb76f464b6",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "shearwall.err",
+            "bytes": 18485,
+            "sha256": "5fcd5936f3e7b9d0798878809c5c118bbce740de796c9becba87304686093a40",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9477,
+            "sha256": "90369d012fa878b8ad260a51eaff0254ffa9dda7fc08492938d8e2df016a9ffd",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sof_cs_analysis.err",
+            "bytes": 10843,
+            "sha256": "95226094733fd91f81ed7a4f4900ea0f71c253b7f2103e30a92c11016a335509",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_analysis.err",
+            "bytes": 38738,
+            "sha256": "a8c12aadd6c0f15ec829c264929d636b85cc6a8d74dc73b53d5884e89752a09e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_check.err",
+            "bytes": 12247,
+            "sha256": "a26fc83a25b640130d10947c57efbd2486021310f1f314069749c51c620e4e80",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_loadcopy.err",
+            "bytes": 1268,
+            "sha256": "10bab3d42eaa30fd3c4fe6b3255bd3ac8ce1d97e5e85e0d1b62dcca32a6c4ff0",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_print.err",
+            "bytes": 1045,
+            "sha256": "c9c96c2db0954c1a51de9fe9537052e76a2d8bdf0123f8f32c02ad9f7e528830",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 70314,
+            "sha256": "dfe0837a0c738cfb7ab5771c490e6b77ae744d147e9b9202b513b427a31f2941",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 47032,
+            "sha256": "44c5706ff7b68a30f9d6e58a14bede657d5c6f8b7682f34e689539f2d990a6d9",
+            "catalogueVersion": "231170"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 64927,
+            "sha256": "2d7af671a31247d482b86f28eb6499e13f3ed38966373c49f418bc857727dd4e",
+            "catalogueVersion": "231170"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 230591,
+            "sha256": "c36d5dd1588b4d77aa7da0e868cac0f1d91133951d990bc0ebacdb318f8f3510",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 98666,
+            "sha256": "c7b55463e18ab3a0df19785c1b454dcabca5ec9efd1d5b7062f61c318f785546",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41054,
+            "sha256": "de6871e53ea96cd299c158f9b3fc4a5f3b83f8b779c248a9113df14b286c7ee6",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48172,
+            "sha256": "57767085e7c1cdcac1c048d19e84d13bbfb09a9108d348a61d959ba83658f837",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 962,
+            "sha256": "b1367187c419151d2ac1f96d4600499bd339d65b26c789d83694cb89b9f2aaad",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 173503,
+            "sha256": "758b6d4611f9427059d1b3a005496b8e1e2bc12eb14574e47045176eb560b1cd",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 12474,
+            "sha256": "9856a8d1b35bcad59d761a3deb3a23539ebd0e099ee31accf8278cfd6181376a",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 187288,
+            "sha256": "592609ea75b42be282c8e3ef5d6757341ab4096e894f2f8bf1395b90f5edac97",
+            "catalogueVersion": "230323"
+          }
+        ]
+      },
+      "2024": {
+        "release": "2024",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 88584,
+            "sha256": "1febdafcbe0db58fbd30a8dcc42fb010297c769016b75a35d7b4430ce7b69045",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 100815,
+            "sha256": "e9ba8ba6d3d5c6d6fdff23772f036a991d2a91d530e8dd8ad48d94305e454552",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 296020,
+            "sha256": "457f498e670a775fd4403b9915c13f906cbf1bc3671c8590521c2cce46b9910f",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 39163,
+            "sha256": "43ffe2e720e593b65c6fb2cc51ce6cf2c9385b72faa7bd490fccdfa34b93f243",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 36466,
+            "sha256": "2a21365662efcaff45e138b5b5adde7dbf9d8731113f6962a7e64948b25d93aa",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 221280,
+            "sha256": "98e520fc7589ea9baf1c4be906e6f09f5abb85f2587c46fe19eb1a0551b2af5e",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 23778,
+            "sha256": "94c27648946608ec91eccc254ed1e6b308fa5cafdfdfc9b10b8fdb71bd93f317",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "composite.err",
+            "bytes": 10405,
+            "sha256": "857785b93c7fa7029ab4d7746058e608d68e35fdc9553b8191749fee4cbb6cc5",
+            "catalogueVersion": "211122"
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108930,
+            "sha256": "600f94eb4ceb7049e57b104ae18a7030b706fb86d119b27bf1176a0fb4253eb2",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csa.err",
+            "bytes": 1754,
+            "sha256": "9a04676d7355f10d281b423edc4e6da6e124e86617c219c84feb2098f825a2a4",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "csm.err",
+            "bytes": 147952,
+            "sha256": "d610d895aca30bfdc1a7e98698a2248854b3aa8cfdecd0395503ff6f537306e5",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2042,
+            "sha256": "0b27a65999b032200ff20300b1ffbdf861ad5c296ab2df3bd40ba8e3e8a70fee",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7393,
+            "sha256": "36145560915b6e4f40fb89624d2b842100c44d83dd9d961971be32dc8443221f",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27076,
+            "sha256": "51db63452237eb18618b6c532a30bc3ec6cc56aed1da7a8ff8d174d554c9c038",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2177,
+            "sha256": "43673166de2f99154f0f85c807ebac787dd8e9bf1f6fbb2f32a90e43080948d4",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 11054,
+            "sha256": "f7758cdc25abf77cd170944fdfa3acc5b6f9918aba2f88fe19c67c78f060d7d7",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 29062,
+            "sha256": "6f1f3118b238b2e990c686f73dc1be8b6b4949329f3b5eb40a1bad0aecab60b4",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4436,
+            "sha256": "4c3e25935808c268da801b4db30c10d80f5e338780d4e2f5ceffaf6043f5fb3a",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38530,
+            "sha256": "1ecdcb7077806e7129f21881036db4ccdae8823b3f83d2052d01403e62c657ef",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14503,
+            "sha256": "13a0f85ee2bedecfac7842d642e4ecffb5254a53f669f3a28d65ed8371012bbf",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 36934,
+            "sha256": "8eb8ba4c5621abbf47b434839a00d6452b6a545d011bc5ec3777f5fc222eca83",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 6483,
+            "sha256": "ff789779c2a070e4e6228a25629b427c454adcbc4884bb3d9bb0b98ee71afcb6",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "feacheck.err",
+            "bytes": 7607,
+            "sha256": "0be82352dafdf8d49e72bd0c3523b036127cb206800f6dae940e6c156b8a69cf",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 32154,
+            "sha256": "d26e621dec87ffd1834928a5dcaefb6573ac1f78051d046a052976786945794c",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "ifc_export.err",
+            "bytes": 673,
+            "sha256": "34bcc774552bfb0604927041a2f7637f94e20c3fe24b3eab7cc7c7ac84e9d364",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 29510,
+            "sha256": "3787e1f98e5cb75782376fe92e967d96996add5e512c77cc101a7ecfec6b2272",
+            "catalogueVersion": "240770"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2188,
+            "sha256": "92895ef65431a7c64e9ea06d45161dd8916200226f7a8e3fb44fb930bb5f4ece",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 164820,
+            "sha256": "0eb28e8301b1340fbf02334d27c556f7e24fbf89f1665a5038aaf2f8232a7105",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "saf_export.err",
+            "bytes": 1054,
+            "sha256": "014ae790175b761ac179a6769741748ac8366b8d18c8b8fcdcdbf08a9c2ebd6b",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "shearwall.err",
+            "bytes": 20478,
+            "sha256": "62eba5eafb31bcf933180c9a951be39b37e084281eda0a8f24499829d420fd74",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9478,
+            "sha256": "5cb046f6e3a48098c80b33d6d8044362c22cb34c46fc9575d55afa952943cabb",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sof_cs_analysis.err",
+            "bytes": 12449,
+            "sha256": "9af219c0fe509c4a5919a0df6dd395388e377b02ec81c59ffeac214312c963eb",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_analysis.err",
+            "bytes": 54415,
+            "sha256": "b4fcf0e49f62fc63c7b38164dbbc0a4688f60725fabcc4b70667a3f696c348f9",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_check.err",
+            "bytes": 12467,
+            "sha256": "64d8bf9d2b939bb43c1dbf013f450f6eaa5025accf4d02ccd98297dcfe18ce0e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_loadcopy.err",
+            "bytes": 1268,
+            "sha256": "10bab3d42eaa30fd3c4fe6b3255bd3ac8ce1d97e5e85e0d1b62dcca32a6c4ff0",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_storeys.err",
+            "bytes": 1687,
+            "sha256": "ce90a388b56692cd1c2cd25622b2332a03e0b7d5f76400a8c7a73cc89323eb21",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_print.err",
+            "bytes": 1045,
+            "sha256": "c9c96c2db0954c1a51de9fe9537052e76a2d8bdf0123f8f32c02ad9f7e528830",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 70571,
+            "sha256": "615269d4e7e19a594f65daa5a8f58cdf67fb7ae5df94ad2c8205f95109598abc",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 48568,
+            "sha256": "197af943892cdaa42876b620e0ff17e281d51cd0a634db78cf636fdf3f50849e",
+            "catalogueVersion": "240970"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 66757,
+            "sha256": "1891b76859e9bf93e66bedbe6572b25d93986dadc7e88e014ab098c9aeaea993",
+            "catalogueVersion": "240970"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 232479,
+            "sha256": "f177b43322370b5fdbac428e4037fc7a30fe68fad9f1d62ac6454d368cd4ae7b",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 99119,
+            "sha256": "7c606d38e89c445bc0cbceb43effe0371b1c0bd1f0bb7f195d7e57dd4f2c006e",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41054,
+            "sha256": "de6871e53ea96cd299c158f9b3fc4a5f3b83f8b779c248a9113df14b286c7ee6",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48158,
+            "sha256": "542fda396de21323ec87cd2fec97e67ca71ed1dc5069de8fc64ffd8cf49404f8",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 962,
+            "sha256": "b1367187c419151d2ac1f96d4600499bd339d65b26c789d83694cb89b9f2aaad",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 173538,
+            "sha256": "6f0a00a4bb83c2cfbf180da3599f1704a9281e8c9fd27e225f5d32225654880f",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 12475,
+            "sha256": "f6a367afdd66a07cec7985e84b48d0f8f3fdb186c89b7b07c7bea33232c81aa8",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 189353,
+            "sha256": "e612384a778795bd3b967b3b674c89e0631c2b569f1131a50c5cc6dc875cb721",
+            "catalogueVersion": "230023"
+          }
+        ]
+      },
+      "2025": {
+        "release": "2025",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 89188,
+            "sha256": "1b4ecd4caf62b0146af94507b3db0d14e507ce562bd67f6df707441a335c3334",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 111405,
+            "sha256": "b4216bce1a2bb973adecf3066b408791eb3a062bd8455890d8793c4460c6326f",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 302029,
+            "sha256": "00a74924c4630419e916b584cc9a8f99d2f39cefa779d2ba150546f9d7c476ed",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 39446,
+            "sha256": "a3ddc91e577c8fa202d62538d2ad7408c315601c1a1b6d9f04400799e7030c98",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 42142,
+            "sha256": "db9b6c9fb44ffda917cee242c6e6d6d17cf49a4ea168b831572eb8e2311ff3f7",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 223431,
+            "sha256": "1ee64bd22f7d7f5a1830a247445646257e8259ddfcd8a0fbd3a899ad02441e8a",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 23839,
+            "sha256": "7356206d6243659dca07196933552531d68c1ef77ef6a5f38dac563b42d78922",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "composite.err",
+            "bytes": 37926,
+            "sha256": "8b70c94002ed26a50f9a5f9e4f3445c5639076683760b3d505ca5d6b85853be6",
+            "catalogueVersion": "211122"
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108932,
+            "sha256": "8298e56a7f168baf036c140ccd1acee4e0154b8c5267e8319d43ab5f607ff841",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csa.err",
+            "bytes": 1992,
+            "sha256": "1efd0fee0ff5469a30b1bb27f88deca13ca71f6b994e4a3932f18e4780d633a5",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "csm.err",
+            "bytes": 150171,
+            "sha256": "031b37fcb74fd4d0d00a174fd8aadf78e454943a6e87568eadac19646579004e",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2080,
+            "sha256": "7f7c845a3733830f1bb92c4ed7ccfb2c4c1c0cf34fee148fd78ec17b8e4846c5",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7701,
+            "sha256": "cb952dd0087b720c7ab647d159c7f09621515348130c12ebeda06c99c13f57b1",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27076,
+            "sha256": "51db63452237eb18618b6c532a30bc3ec6cc56aed1da7a8ff8d174d554c9c038",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2220,
+            "sha256": "1e28f922b79dbeb6f05b4aaa2d3b166d02e1fbb155b52c58d2e326b63e8cc046",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 12170,
+            "sha256": "7f769acd3af462f1240a5be3a079c1113b556b71ac33c90ccbaa7cfdae55ad01",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 29310,
+            "sha256": "ef9bfe799689ac4ca0809b414ef34ce161a08983b6e894bcd805d229228f670e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4446,
+            "sha256": "70bc7ce7936bbffbb659558435ad0f801957222927ca59f5d8ea3809af609b37",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38530,
+            "sha256": "1ecdcb7077806e7129f21881036db4ccdae8823b3f83d2052d01403e62c657ef",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 14643,
+            "sha256": "1a054b25f48097d2daf824cf145cbaa3c94ad60907997e8c6b2035c4518e59d8",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 36943,
+            "sha256": "a0757d4108d22d3f3d50fd80efbfbe553120e7838a75da9ea1049fff01602155",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 6889,
+            "sha256": "e55850ca7ecb6d6528a78846cb9b7d3abd464f18d2d016196b00cd5db2292da3",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "feacheck.err",
+            "bytes": 7607,
+            "sha256": "0be82352dafdf8d49e72bd0c3523b036127cb206800f6dae940e6c156b8a69cf",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 32154,
+            "sha256": "d26e621dec87ffd1834928a5dcaefb6573ac1f78051d046a052976786945794c",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "ifc_export.err",
+            "bytes": 673,
+            "sha256": "34bcc774552bfb0604927041a2f7637f94e20c3fe24b3eab7cc7c7ac84e9d364",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 30711,
+            "sha256": "91b645e4de2e5f6d4f427375862b2ccf155362041387ee8a99fbe87c88ec0dca",
+            "catalogueVersion": "250570"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2189,
+            "sha256": "fd9cbb0fc0de2fd6198fbe6260248abd661dc87718c11c6b7b7b0c9d934dcc6d",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 166879,
+            "sha256": "536f009970c84a6998737520504c6b23c7225f52f6b7adea97a6f508142ebe72",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "saf_export.err",
+            "bytes": 1054,
+            "sha256": "014ae790175b761ac179a6769741748ac8366b8d18c8b8fcdcdbf08a9c2ebd6b",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "shearwall.err",
+            "bytes": 20478,
+            "sha256": "62eba5eafb31bcf933180c9a951be39b37e084281eda0a8f24499829d420fd74",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9479,
+            "sha256": "6419da3e97a655ee0b320aa439cff1c603329de90ba48c1f6ae8c3ef709a1d58",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sof_cs_analysis.err",
+            "bytes": 15329,
+            "sha256": "0a07d2de269361e361cfcefbc92e784dec6d7eee32db79c6d4814e536d6c70ff",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_analysis.err",
+            "bytes": 59757,
+            "sha256": "8de7ff893225f46fc8a8453647da1e9e5bbaaac252fa038add841cb07348831b",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_check.err",
+            "bytes": 12467,
+            "sha256": "64d8bf9d2b939bb43c1dbf013f450f6eaa5025accf4d02ccd98297dcfe18ce0e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_loadcopy.err",
+            "bytes": 1268,
+            "sha256": "10bab3d42eaa30fd3c4fe6b3255bd3ac8ce1d97e5e85e0d1b62dcca32a6c4ff0",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_performance_crit.err",
+            "bytes": 4115,
+            "sha256": "a32130ce8abe425ef6897654033242c66d8ba57878440bfe7ff8387269aaeadd",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_storeys.err",
+            "bytes": 1687,
+            "sha256": "ce90a388b56692cd1c2cd25622b2332a03e0b7d5f76400a8c7a73cc89323eb21",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_print.err",
+            "bytes": 1045,
+            "sha256": "c9c96c2db0954c1a51de9fe9537052e76a2d8bdf0123f8f32c02ad9f7e528830",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 76377,
+            "sha256": "7c16645ff97676fa705f0f48b1c279dde2219d284e150304ad51921ca9d57a97",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 48927,
+            "sha256": "86ff5d440510f3534b713883a2916cf4622265f6f96f3bb13e16e9e96107b1d9",
+            "catalogueVersion": "250570"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 68445,
+            "sha256": "5724314d3bc9744040f4b00fbc9cb3a49402a032f3ba47ce63d6411352c78f47",
+            "catalogueVersion": "250570"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 236135,
+            "sha256": "c5d66af8c7290fb97639372debcc60b67235de705d9587208a21d81795136519",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 100658,
+            "sha256": "1a4c4b4ba3ba3d9a761c28e08f340aac0fe693f3921356a798b498be84f9904c",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41054,
+            "sha256": "de6871e53ea96cd299c158f9b3fc4a5f3b83f8b779c248a9113df14b286c7ee6",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48158,
+            "sha256": "542fda396de21323ec87cd2fec97e67ca71ed1dc5069de8fc64ffd8cf49404f8",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 962,
+            "sha256": "b1367187c419151d2ac1f96d4600499bd339d65b26c789d83694cb89b9f2aaad",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 173932,
+            "sha256": "6bf824f7bea010f607014d2503aea90198e9730ed5a9191cd049c935d945a1e1",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 12475,
+            "sha256": "f6a367afdd66a07cec7985e84b48d0f8f3fdb186c89b7b07c7bea33232c81aa8",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 193724,
+            "sha256": "57cab322db0d5a26e15205fe535b7da16ffacee19193fbad14b86c99bc967ab0",
+            "catalogueVersion": "230023"
+          }
+        ]
+      },
+      "2026": {
+        "release": "2026",
+        "catalogues": [
+          {
+            "file": "aqb.err",
+            "bytes": 89145,
+            "sha256": "9f1b644e765a06ca0cbbdd73de38c42605a83a36d4ccc4257eb95a71fdc8642e",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "aqua.err",
+            "bytes": 116975,
+            "sha256": "4b45ba360dc125a314db6794956f4890ee162588bcdd5175bfc817784e05b94f",
+            "catalogueVersion": "190070"
+          },
+          {
+            "file": "ase.err",
+            "bytes": 303511,
+            "sha256": "f5d53d1ce4a0260d11b6640d9fac1c76d107db2c3a0f75badea12f7d813a4501",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "bdk.err",
+            "bytes": 41218,
+            "sha256": "34b7cf9e396ce42cba5efd6002ec5a92a10172d96752a3b3174666568d8112a0",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "beam.err",
+            "bytes": 48669,
+            "sha256": "a08eb0cb360405eab8ebfdc68920cd861812f2fcd1bbd85fdc8f1e91e3ab2b06",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "bemess.err",
+            "bytes": 223431,
+            "sha256": "e8e2bf8748fd4ea187965f4b35e603695c7a336833c27298b9c1fcdcaa800412",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "column.err",
+            "bytes": 24352,
+            "sha256": "3dc24151b047c0bec846298f7a9e0308a5639e2227cc2f1cf79e8c6a0f7c51c4",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "composite.err",
+            "bytes": 38455,
+            "sha256": "31c4fe41bb6fd9c59cffebc1156f6448dda291f294ffee0e7419322a215ed598",
+            "catalogueVersion": "211122"
+          },
+          {
+            "file": "comrel.err",
+            "bytes": 108932,
+            "sha256": "8298e56a7f168baf036c140ccd1acee4e0154b8c5267e8319d43ab5f607ff841",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "csa.err",
+            "bytes": 4030,
+            "sha256": "ef22cb73b1639f7c10de834ef09127961eb29072d9890aa16378e78ad8fba9a9",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "csm.err",
+            "bytes": 159641,
+            "sha256": "cb7bbed63972d4f3fbee3333f0d502a1c73219856426ed2aea7b87ebde5437e7",
+            "catalogueVersion": "200070"
+          },
+          {
+            "file": "dbinfo.err",
+            "bytes": 2080,
+            "sha256": "7f7c845a3733830f1bb92c4ed7ccfb2c4c1c0cf34fee148fd78ec17b8e4846c5",
+            "catalogueVersion": "120123"
+          },
+          {
+            "file": "dbmerg.err",
+            "bytes": 7701,
+            "sha256": "cb952dd0087b720c7ab647d159c7f09621515348130c12ebeda06c99c13f57b1",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "dbprin.err",
+            "bytes": 27078,
+            "sha256": "de138528ad6be9cd4a0f0fa2a100986056a58caf1ed71cd7b06be4508e3ae93b",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "decreator.err",
+            "bytes": 2272,
+            "sha256": "a2ac1ae999d0569f19d7f83b19a4765881922b81bf2b52af646036b0617d18ba",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design.err",
+            "bytes": 3925,
+            "sha256": "6955760e8cbcfdf7c5b9bde5cb72507d41a5553183ea158be96d8cb704cf8f86",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "design_elements.err",
+            "bytes": 33532,
+            "sha256": "c17df92009f690e959117aff59b48ed7f6553a5032bdda14cd12d68b34fed3e7",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "dolfyn.err",
+            "bytes": 4446,
+            "sha256": "70bc7ce7936bbffbb659558435ad0f801957222927ca59f5d8ea3809af609b37",
+            "catalogueVersion": "111033"
+          },
+          {
+            "file": "dsync.err",
+            "bytes": 1101,
+            "sha256": "00e04c4382b677468e57de23c2016c6404e1e2f62a631ea06698e8ba59a7f465",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "dyna.err",
+            "bytes": 38530,
+            "sha256": "1ecdcb7077806e7129f21881036db4ccdae8823b3f83d2052d01403e62c657ef",
+            "catalogueVersion": "170033"
+          },
+          {
+            "file": "dynr.err",
+            "bytes": 15145,
+            "sha256": "1dac8ebf3300fda59c96d620c33755ad198125a3eb095cddb04a6292b08d57a7",
+            "catalogueVersion": "180099"
+          },
+          {
+            "file": "ella.err",
+            "bytes": 36944,
+            "sha256": "6c389afe4b2f8afdb982e94a4f685a35a6e97a7f4c9cfb32ed20d175be5cd2b6",
+            "catalogueVersion": "160030"
+          },
+          {
+            "file": "feabench.err",
+            "bytes": 7557,
+            "sha256": "7ca797a25b1eb2140d250aa9c32d25084d463c841ee6c13a6a6711f481da7da9",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "feacheck.err",
+            "bytes": 7607,
+            "sha256": "0be82352dafdf8d49e72bd0c3523b036127cb206800f6dae940e6c156b8a69cf",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "footing.err",
+            "bytes": 36961,
+            "sha256": "4dc9eab8ab59be0e1b4962dda7ef79aa5dd6688857770ffd3646dc6bf498a430",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gks.err",
+            "bytes": 6266,
+            "sha256": "cc61a218d3a76e118d84bc1749a84f172c37adcd251d4ae4694ab206b6d43d60",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "gkx.err",
+            "bytes": 6709,
+            "sha256": "316c9e52d7174ef9e50d47fb02961407274d85590c0b1865463bb3181a3bb5b7",
+            "catalogueVersion": "102599"
+          },
+          {
+            "file": "hase.err",
+            "bytes": 32154,
+            "sha256": "d26e621dec87ffd1834928a5dcaefb6573ac1f78051d046a052976786945794c",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "hydra.err",
+            "bytes": 18513,
+            "sha256": "a9b5aafba827f14d046ff55ea024592e2baf6fc02711028ee74c47dbb0aa06d1",
+            "catalogueVersion": "130033"
+          },
+          {
+            "file": "ifc_export.err",
+            "bytes": 673,
+            "sha256": "34bcc774552bfb0604927041a2f7637f94e20c3fe24b3eab7cc7c7ac84e9d364",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "maxima.err",
+            "bytes": 30688,
+            "sha256": "25334c5cdb8370c8e34e4ef3e576ca2985437259e828bade9eac6f124f1054c4",
+            "catalogueVersion": "250370"
+          },
+          {
+            "file": "plbconverter.err",
+            "bytes": 2189,
+            "sha256": "fd9cbb0fc0de2fd6198fbe6260248abd661dc87718c11c6b7b7b0c9d934dcc6d",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "rely.err",
+            "bytes": 23003,
+            "sha256": "6730140b1b3390744efabb6a517b927fe882a1f3239bf5553ab4a394be7390ed",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "results.err",
+            "bytes": 172206,
+            "sha256": "94506e86685e7d55cdcaeca24e0e303762341eb1fd73ca9d18fefa42bf05fef1",
+            "catalogueVersion": "150550"
+          },
+          {
+            "file": "saf_export.err",
+            "bytes": 1054,
+            "sha256": "014ae790175b761ac179a6769741748ac8366b8d18c8b8fcdcdbf08a9c2ebd6b",
+            "catalogueVersion": "0000"
+          },
+          {
+            "file": "shearwall.err",
+            "bytes": 20478,
+            "sha256": "62eba5eafb31bcf933180c9a951be39b37e084281eda0a8f24499829d420fd74",
+            "catalogueVersion": "010170"
+          },
+          {
+            "file": "sir.err",
+            "bytes": 9479,
+            "sha256": "6419da3e97a655ee0b320aa439cff1c603329de90ba48c1f6ae8c3ef709a1d58",
+            "catalogueVersion": "160070"
+          },
+          {
+            "file": "sof_fea_analysis.err",
+            "bytes": 70031,
+            "sha256": "b63ec344ffdce427f3f1c86e048fe5a32e3139de35f8b634ff32144fdda8bbeb",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_check.err",
+            "bytes": 12467,
+            "sha256": "64d8bf9d2b939bb43c1dbf013f450f6eaa5025accf4d02ccd98297dcfe18ce0e",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_cs_analysis.err",
+            "bytes": 16701,
+            "sha256": "754c77ff2402f8b03d61a8bf9b6331b5833f946c632425893855dbf78f27a392",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_loadcopy.err",
+            "bytes": 1268,
+            "sha256": "10bab3d42eaa30fd3c4fe6b3255bd3ac8ce1d97e5e85e0d1b62dcca32a6c4ff0",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_member_design.err",
+            "bytes": 11409,
+            "sha256": "3132ba8a34c538d5efac972db96680ca86edb3ac3a7e54317d66d23dd11a8548",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_performance_crit.err",
+            "bytes": 4115,
+            "sha256": "a32130ce8abe425ef6897654033242c66d8ba57878440bfe7ff8387269aaeadd",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_fea_storeys.err",
+            "bytes": 1687,
+            "sha256": "ce90a388b56692cd1c2cd25622b2332a03e0b7d5f76400a8c7a73cc89323eb21",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sof_print.err",
+            "bytes": 1045,
+            "sha256": "c9c96c2db0954c1a51de9fe9537052e76a2d8bdf0123f8f32c02ad9f7e528830",
+            "catalogueVersion": "010150"
+          },
+          {
+            "file": "sofiload.err",
+            "bytes": 84521,
+            "sha256": "05573e62458fc1a67cee326de420002870461d20e7e8d3ff2a4ae1e8cf93be86",
+            "catalogueVersion": "172050"
+          },
+          {
+            "file": "sofimsha.err",
+            "bytes": 49285,
+            "sha256": "4835c1cb2d303c50e8a2d7c6cf8365d9b4ed95e70823b605c6a99ed8e63ba53b",
+            "catalogueVersion": "250370"
+          },
+          {
+            "file": "sofimshc.err",
+            "bytes": 69607,
+            "sha256": "d042f9415a653f682084e3e9190cfcbf654901cf18cadf16a6a3d8ff54c7775d",
+            "catalogueVersion": "250370"
+          },
+          {
+            "file": "sofistik.err",
+            "bytes": 239822,
+            "sha256": "2f3ccb40f84ea3141e57fad1f0f7e2fc2abb3647895dfa4983dde5a0da392821",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "sofistik_leg.err",
+            "bytes": 101159,
+            "sha256": "3d9a55f4cc9bfc8933e8b263530319780b0fd9dbf0d886400e09fc4984460096",
+            "catalogueVersion": ""
+          },
+          {
+            "file": "star2.err",
+            "bytes": 41056,
+            "sha256": "6d4d32fe4e057d4fb3fb77cc0b1402b4b7d09c6b58343fe44cad33dfbecfe55d",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "talpa.err",
+            "bytes": 48158,
+            "sha256": "542fda396de21323ec87cd2fec97e67ca71ed1dc5069de8fc64ffd8cf49404f8",
+            "catalogueVersion": "180050"
+          },
+          {
+            "file": "template.err",
+            "bytes": 962,
+            "sha256": "b1367187c419151d2ac1f96d4600499bd339d65b26c789d83694cb89b9f2aaad",
+            "catalogueVersion": "120233"
+          },
+          {
+            "file": "tendon.err",
+            "bytes": 173932,
+            "sha256": "6bf824f7bea010f607014d2503aea90198e9730ed5a9191cd049c935d945a1e1",
+            "catalogueVersion": "200670"
+          },
+          {
+            "file": "textile.err",
+            "bytes": 12475,
+            "sha256": "f6a367afdd66a07cec7985e84b48d0f8f3fdb186c89b7b07c7bea33232c81aa8",
+            "catalogueVersion": "180033"
+          },
+          {
+            "file": "tunars.err",
+            "bytes": 1739,
+            "sha256": "b67568c36c2f3d6c45a0e152f0eaf31cb614a07426dabf8de1dcaebe0a9a7c52",
+            "catalogueVersion": "160033"
+          },
+          {
+            "file": "wing.err",
+            "bytes": 195821,
+            "sha256": "69d69bcedc8fbfb725bfa3a61e5c01c5fdf905707c62ddeb6e08a816d7e32a8f",
+            "catalogueVersion": "230023"
+          }
+        ]
+      }
+    }
+  },
+  "allowedUnresolvedRedirects": [
+    {
+      "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
+      "language": "de",
+      "module": "SOFIMSHA",
+      "command": "QUAD",
+      "position": 17,
+      "item": "KR",
+      "target": {
+        "command": "STAB",
+        "item": "KR"
+      }
+    },
+    {
+      "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
+      "language": "en",
+      "module": "SOFIMSHA",
+      "command": "QUAD",
+      "position": 17,
+      "item": "KR",
+      "target": {
+        "command": "BEAM",
+        "item": "KR"
+      }
+    }
+  ],
+  "unresolvedRedirects": {
+    "2018.de": 1,
+    "2018.en": 1,
+    "2020.de": 1,
+    "2020.en": 1,
+    "2022.de": 1,
+    "2022.en": 1,
+    "2023.de": 1,
+    "2023.en": 1,
+    "2024.de": 1,
+    "2024.en": 1,
+    "2025.de": 1,
+    "2025.en": 1,
+    "2026.de": 1,
+    "2026.en": 1
+  },
+  "schemaDigest": "3e8a9c02c4cad1af851fee8fb01749c2878909da812c57253d0ede5a817b9180",
+  "grammarVocabularyDigest": "72be0544f22ddf57cc66fbaed42b103d699c8b4e0170d55c3ea8264f0441d74c"
+}
