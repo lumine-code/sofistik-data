@@ -62,7 +62,7 @@ test("packs and installs only the supported public library", () => {
       packedPaths.some((file) => file.startsWith("build/")),
       false,
     );
-    assert.ok(pack.unpackedSize < 40_000_000);
+    assert.ok(pack.unpackedSize < 50_000_000);
 
     const consumer = path.join(temporaryRoot, "consumer");
     fs.mkdirSync(consumer);
@@ -81,7 +81,7 @@ test("packs and installs only the supported public library", () => {
     const installed = require(
       path.join(consumer, "node_modules", "@lumine-code", "sofistik-data"),
     );
-    assert.equal(installed.getMetadata().formatVersion, 1);
+    assert.equal(installed.getMetadata().formatVersion, 2);
     assert.ok(
       installed
         .provider()

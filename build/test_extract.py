@@ -13,6 +13,17 @@ SPEC.loader.exec_module(extractor)
 
 
 class ExtractorTests(unittest.TestCase):
+    def parse_schema(self, catalogue_text, module="TEST", language="en"):
+        with tempfile.TemporaryDirectory() as directory:
+            catalogue = Path(directory) / f"{module.lower()}.err"
+            catalogue.write_text(catalogue_text, encoding="utf-8")
+            commands = extractor.parse_err_file(catalogue)["commands"]
+            schema, _filled = extractor.build_language_schema(
+                {module: commands}, language
+            )
+            extractor.resolve_enum_redirects(schema)
+            return schema
+
     def test_parses_a_complete_catalogue_through_localization(self):
         with tempfile.TemporaryDirectory() as directory:
             catalogue = Path(directory) / "dbin.err"
@@ -20,7 +31,7 @@ class ExtractorTests(unittest.TestCase):
                 "0000DBIN SOFiSTiK\n"
                 "0000VERSION 202600\n"
                 "-*0=TEST NO \"TYPE\n"
-                "-*0K A B\n",
+                "-*12 A B\n",
                 encoding="utf-8",
             )
 
@@ -29,7 +40,7 @@ class ExtractorTests(unittest.TestCase):
 
             for language in ("de", "en"):
                 schema, _filled = extractor.build_language_schema(commands, language)
-                slots = schema["DBINFO"]["TEST"]["slots"]
+                slots = schema["DBINFO"]["TEST"]["forms"][0]["slots"]
                 self.assertEqual([slot["name"] for slot in slots], ["NO", "TYPE"])
                 self.assertEqual(slots[1]["enumValues"], ["A", "B"])
 
@@ -73,7 +84,181 @@ class ExtractorTests(unittest.TestCase):
             english, _filled = extractor.build_language_schema(
                 {"SOFISTIK": parsed["commands"]}, "en"
             )
-            self.assertEqual(english["BASIC"]["CTRL"]["slots"][0]["name"], "OPT")
+            self.assertEqual(
+                english["BASIC"]["CTRL"]["forms"][0]["slots"][0]["name"],
+                "OPT",
+            )
+
+    def test_pairs_language_blocks_with_form_local_metadata(self):
+        schema = self.parse_schema(
+            "0000TEST SOFiSTiK\n"
+            "0000VERSION 202600\n"
+            '-10 ERST"TYP\n'
+            '-10 ZWEI"MOD\n'
+            '-20 FIRS"TYPE\n'
+            "-*11 A\n"
+            '-20 SECO"MODE\n'
+            "-*11 B\n"
+        )
+
+        self.assertEqual(
+            schema["TEST"]["FIRS"]["forms"][0]["slots"][0]["enumValues"],
+            ["A"],
+        )
+        self.assertEqual(
+            schema["TEST"]["SECO"]["forms"][0]["slots"][0]["enumValues"],
+            ["B"],
+        )
+
+    def test_keeps_distinct_command_forms_and_scopes_their_enums(self):
+        schema = self.parse_schema(
+            "0000BDK SOFiSTiK\n"
+            "0000VERSION 202600\n"
+            '-10 EIGE"TYP  NEIG LFB\n'
+            '-20 EIGE"TYPE NEIG LCB\n'
+            "-111     BEUL NCRY NCRZ NCRT MCR\n"
+            "-211     BUCK NCRY NCRZ NCRT MCR\n"
+            '-10 EIGE STAB LF  "TYP  HORD\'DNR \'ENR\n'
+            '-20 EIGE BEAM LC  "TYPE HORD\'DNO \'ENO\n',
+            module="BDK",
+        )
+
+        forms = schema["BDK"]["EIGE"]["forms"]
+        self.assertEqual(
+            [[slot["name"] for slot in form["slots"]] for form in forms],
+            [["TYPE", "NEIG", "LCB"], ["BEAM", "LC", "TYPE", "HORD", "DNO", "ENO"]],
+        )
+        self.assertEqual(
+            forms[0]["slots"][0]["enumValues"],
+            ["BUCK", "MCR", "NCRT", "NCRY", "NCRZ"],
+        )
+        self.assertEqual(forms[1]["slots"][2]["enumValues"], [])
+        self.assertEqual(
+            [[slot["position"] for slot in form["slots"]] for form in forms],
+            [list(range(1, 4)), list(range(1, 7))],
+        )
+
+    def test_deduplicates_identical_complete_forms(self):
+        schema = self.parse_schema(
+            "0000TEXTILE SOFiSTiK\n"
+            "0000VERSION 202200\n"
+            "-10 CUTS I1 I2\n"
+            "-20 CUTS I1 I2\n"
+            "-10 CUTS I1 I2\n"
+            "-20 CUTS I1 I2\n",
+            module="TEXTILE",
+        )
+
+        forms = schema["TEXTILE"]["CUTS"]["forms"]
+        self.assertEqual(len(forms), 1)
+        self.assertEqual([slot["name"] for slot in forms[0]["slots"]], ["I1", "I2"])
+
+    def test_distinguishes_references_from_argumentless_forms(self):
+        parsed = extractor.parse_err_file
+        with tempfile.TemporaryDirectory() as directory:
+            catalogue = Path(directory) / "basic.err"
+            catalogue.write_text(
+                "0000SOFISTIK SOFiSTiK\n"
+                "0000VERSION 202600\n"
+                "-10=KOPF\n"
+                "-20=HEAD\n"
+                "-10 ENDE\n"
+                "-20 END\n",
+                encoding="utf-8",
+            )
+            commands = parsed(catalogue)["commands"]
+
+        self.assertEqual(commands["KOPF"]["forms_de"], [])
+        self.assertEqual(commands["KOPF"]["forms_en"], [])
+        self.assertEqual(commands["ENDE"]["forms_de"], [{"slots": []}])
+        self.assertEqual(commands["ENDE"]["forms_en"], [{"slots": []}])
+
+    def test_extracts_numeric_and_punctuated_enum_values(self):
+        values = extractor.extract_enum_values(
+            "0 15 1045 2D 3D 2DSS 2A EC-0 SIG+ U-X A6.1 -EGX +X *SAR "
+            ">FIX PT/P (-) NONE BEME'FILE"
+        )
+
+        self.assertEqual(
+            values,
+            [
+                "0",
+                "15",
+                "1045",
+                "2D",
+                "3D",
+                "2DSS",
+                "2A",
+                "EC-0",
+                "SIG+",
+                "U-X",
+                "A6.1",
+                "-EGX",
+                "+X",
+                "*SAR",
+                ">FIX",
+                "PT/P",
+                "(-)",
+                "NONE",
+                "BEME",
+                "FILE",
+            ],
+        )
+        self.assertEqual(
+            extractor.extract_enum_values("FULL YES NO obs. XXXX .... ... ..20"),
+            ["FULL", "YES", "NO"],
+        )
+        self.assertEqual(
+            extractor.extract_enum_values("FULL YES NO obs =OPT1"),
+            ["FULL", "YES", "NO", "OBS", "=OPT1"],
+        )
+        self.assertEqual(extractor.extract_enum_values("F18 F19C"), ["F18", "F19C"])
+
+    def test_resolves_letter_selectors_as_positions_twenty_through_thirty_five(self):
+        slots = extractor.extract_param_slots(
+            " ".join(f"P{position}" for position in range(1, 36))
+        )
+
+        self.assertEqual(extractor.target_slot(slots, "A")["name"], "P10")
+        self.assertEqual(extractor.target_slot(slots, "K")["name"], "P20")
+        self.assertEqual(extractor.target_slot(slots, "L")["name"], "P21")
+        self.assertEqual(extractor.target_slot(slots, "Z")["name"], "P35")
+
+    def test_assigns_high_position_enums_to_their_actual_slots(self):
+        schema = self.parse_schema(
+            "0000SOFILOAD SOFiSTiK\n"
+            "0000VERSION 202600\n"
+            '-*0 TRAI!TYPE\'P1 P2 P3 P4 P5 P6 P7 P8 P9 PFAC PFAV WIDT\'PHI '
+            "'PHIS V FUGA XCON YEX \"DIR \"DIRT\n"
+            "-*1K N R L B\n"
+            "-*1L N R L B\n",
+            module="SOFILOAD",
+        )
+
+        slots = schema["SOFILOAD"]["TRAI"]["forms"][0]["slots"]
+        self.assertEqual(slots[19]["name"], "DIR")
+        self.assertEqual(slots[20]["name"], "DIRT")
+        self.assertEqual(slots[19]["enumValues"], ["B", "L", "N", "R"])
+        self.assertEqual(slots[20]["enumValues"], ["B", "L", "N", "R"])
+        self.assertTrue(all(not slot["enumValues"] for slot in slots[:19]))
+
+    def test_recognizes_legacy_shared_data_type_rows(self):
+        schema = self.parse_schema(
+            "0000HYDRA SOFiSTiK\n"
+            "0000VERSION 201800\n"
+            "-10 LINK'NR   A    B    S    EPS\n"
+            "-20 LINK'NO   A    B    S    EPS\n"
+            "-*02          9999 9999 9999\n"
+            "-*310158\n",
+            module="HYDRA",
+        )
+
+        slots = schema["HYDRA"]["LINK"]["forms"][0]["slots"]
+        self.assertEqual(
+            [slot["dataTypeCode"] for slot in slots],
+            [None, "9999", "9999", "9999", None],
+        )
+        self.assertTrue(all("0158" not in slot["enumValues"] for slot in slots))
 
     def test_pairs_adjacent_commands_with_legacy_delimiters(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -94,17 +279,25 @@ class ExtractorTests(unittest.TestCase):
                 ("BEW", "REIN"),
             )
             self.assertEqual(
-                [slot["name"] for slot in commands["BEW"]["slots_de"]], ["BEZ"]
+                [
+                    slot["name"]
+                    for slot in commands["BEW"]["forms_de"][0]["slots"]
+                ],
+                ["BEZ"],
             )
             self.assertEqual(
-                [slot["name"] for slot in commands["BEW"]["slots_en"]], ["TITL"]
+                [
+                    slot["name"]
+                    for slot in commands["BEW"]["forms_en"][0]["slots"]
+                ],
+                ["TITL"],
             )
             self.assertEqual(
                 (commands["SEIT"]["de"], commands["SEIT"]["en"]),
                 ("SEIT", "PAGE"),
             )
-            self.assertEqual(commands["SEIT"]["slots_de"], [])
-            self.assertEqual(commands["SEIT"]["slots_en"], [])
+            self.assertEqual(commands["SEIT"]["forms_de"], [])
+            self.assertEqual(commands["SEIT"]["forms_en"], [])
 
     def test_clears_only_stale_intermediate_schema_files(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -135,12 +328,12 @@ class ExtractorTests(unittest.TestCase):
     def test_keeps_localized_page_as_a_universal_basic_command(self):
         page = extractor.command_template("PAGE")
         page["de"] = "SEIT"
-        page["slots_de"] = extractor.extract_param_slots("UNIE")
-        page["slots_en"] = extractor.extract_param_slots("UNII")
+        page["forms_de"] = [{"slots": extractor.extract_param_slots("UNIE")}]
+        page["forms_en"] = [{"slots": extractor.extract_param_slots("UNII")}]
 
         control = extractor.command_template("CTRL")
-        control["slots_de"] = extractor.extract_param_slots("WARN")
-        control["slots_en"] = extractor.extract_param_slots("WARN")
+        control["forms_de"] = [{"slots": extractor.extract_param_slots("WARN")}]
+        control["forms_en"] = [{"slots": extractor.extract_param_slots("WARN")}]
 
         page_reference = extractor.command_template("PAGE")
         page_reference["de"] = "SEIT"
@@ -163,7 +356,9 @@ class ExtractorTests(unittest.TestCase):
                     schema["ASE"][localized_page], schema["BASIC"][localized_page]
                 )
                 self.assertEqual(
-                    schema["BASIC"][localized_page]["slots"][0]["name"],
+                    schema["BASIC"][localized_page]["forms"][0]["slots"][0][
+                        "name"
+                    ],
                     localized_item,
                 )
                 self.assertIn(localized_page, filled)
@@ -172,8 +367,8 @@ class ExtractorTests(unittest.TestCase):
     def test_recovers_page_from_a_module_when_the_basic_source_is_missing(self):
         page = extractor.command_template("PAGE")
         page["de"] = "SEIT"
-        page["slots_de"] = extractor.extract_param_slots("UNIE")
-        page["slots_en"] = extractor.extract_param_slots("UNII")
+        page["forms_de"] = [{"slots": extractor.extract_param_slots("UNIE")}]
+        page["forms_en"] = [{"slots": extractor.extract_param_slots("UNII")}]
 
         incomplete_basic_page = extractor.command_template("SEIT")
         all_commands = {
@@ -186,7 +381,10 @@ class ExtractorTests(unittest.TestCase):
 
         self.assertEqual(schema["BASIC"]["PAGE"], schema["TENDON"]["PAGE"])
         self.assertEqual(schema["ASE"]["PAGE"], schema["BASIC"]["PAGE"])
-        self.assertEqual(schema["BASIC"]["PAGE"]["slots"][0]["name"], "UNII")
+        self.assertEqual(
+            schema["BASIC"]["PAGE"]["forms"][0]["slots"][0]["name"],
+            "UNII",
+        )
         self.assertIn("PAGE", filled)
 
     def test_preserves_prefixed_placeholders_and_repeated_names(self):
@@ -233,26 +431,37 @@ class ExtractorTests(unittest.TestCase):
         schema = {
             "TEST": {
                 "BASE": {
-                    "slots": [
+                    "forms": [
                         {
-                            "position": 1,
-                            "name": "TYPE",
-                            "kind": "enum",
-                            "dataTypeCode": None,
-                            "enumValues": ["A", "B"],
-                            "enumRedirect": None,
+                            "slots": [
+                                {
+                                    "position": 1,
+                                    "name": "TYPE",
+                                    "kind": "enum",
+                                    "dataTypeCode": None,
+                                    "enumValues": ["A", "B"],
+                                    "enumRedirect": None,
+                                }
+                            ]
                         }
                     ]
                 },
                 "USE": {
-                    "slots": [
+                    "forms": [
                         {
-                            "position": 1,
-                            "name": "MODE",
-                            "kind": "enum",
-                            "dataTypeCode": None,
-                            "enumValues": [],
-                            "enumRedirect": {"command": "BASE", "item": "TYPE"},
+                            "slots": [
+                                {
+                                    "position": 1,
+                                    "name": "MODE",
+                                    "kind": "enum",
+                                    "dataTypeCode": None,
+                                    "enumValues": [],
+                                    "enumRedirect": {
+                                        "command": "BASE",
+                                        "item": "TYPE",
+                                    },
+                                }
+                            ]
                         }
                     ]
                 },
@@ -262,9 +471,10 @@ class ExtractorTests(unittest.TestCase):
         redirects, unresolved = extractor.resolve_enum_redirects(schema)
 
         self.assertEqual((redirects, unresolved), (1, 0))
-        self.assertEqual(schema["TEST"]["USE"]["slots"][0]["enumValues"], ["A", "B"])
+        slot = schema["TEST"]["USE"]["forms"][0]["slots"][0]
+        self.assertEqual(slot["enumValues"], ["A", "B"])
         self.assertEqual(
-            schema["TEST"]["USE"]["slots"][0]["enumRedirect"],
+            slot["enumRedirect"],
             {"command": "BASE", "item": "TYPE"},
         )
 

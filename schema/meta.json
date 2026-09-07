@@ -1,5 +1,5 @@
 {
-  "formatVersion": 1,
+  "formatVersion": 2,
   "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
   "languages": ["de", "en"],
   "sourceModuleAliases": {
@@ -2195,48 +2195,23 @@
       }
     }
   },
-  "allowedUnresolvedRedirects": [
-    {
-      "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
-      "language": "de",
-      "module": "SOFIMSHA",
-      "command": "QUAD",
-      "position": 17,
-      "item": "KR",
-      "target": {
-        "command": "STAB",
-        "item": "KR"
-      }
-    },
-    {
-      "versions": ["2018", "2020", "2022", "2023", "2024", "2025", "2026"],
-      "language": "en",
-      "module": "SOFIMSHA",
-      "command": "QUAD",
-      "position": 17,
-      "item": "KR",
-      "target": {
-        "command": "BEAM",
-        "item": "KR"
-      }
-    }
-  ],
+  "allowedUnresolvedRedirects": [],
   "unresolvedRedirects": {
-    "2018.de": 1,
-    "2018.en": 1,
-    "2020.de": 1,
-    "2020.en": 1,
-    "2022.de": 1,
-    "2022.en": 1,
-    "2023.de": 1,
-    "2023.en": 1,
-    "2024.de": 1,
-    "2024.en": 1,
-    "2025.de": 1,
-    "2025.en": 1,
-    "2026.de": 1,
-    "2026.en": 1
+    "2018.de": 0,
+    "2018.en": 0,
+    "2020.de": 0,
+    "2020.en": 0,
+    "2022.de": 0,
+    "2022.en": 0,
+    "2023.de": 0,
+    "2023.en": 0,
+    "2024.de": 0,
+    "2024.en": 0,
+    "2025.de": 0,
+    "2025.en": 0,
+    "2026.de": 0,
+    "2026.en": 0
   },
-  "schemaDigest": "7fab577eb8eec056549952ccd9c81ae6a1a57184f04c04401099b1e9256dd7e5",
+  "schemaDigest": "50e75b78f14d3a17bf52786fac977ea9610d61d54acb06c3fac10fbf86fa879e",
   "grammarVocabularyDigest": "d77106a81beb9718078898bdae9802921670b05a5b26ef8629342c93af90650c"
 }

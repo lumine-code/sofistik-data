@@ -6,7 +6,7 @@ Provides versioned SOFiSTiK CADINP command and schema data.
 
 ## Features
 
-- **Versioned schemas**: preserves ordered CADINP command slots for every supported release and language.
+- **Versioned schemas**: preserves every CADINP command form and its ordered slots for each supported release and language.
 - **Keyword indexes**: derives compact module, command, item, and enum lookups from the canonical schemas.
 - **Module identities**: distinguishes source catalogue names from public executable aliases.
 - **Tree-sitter vocabulary**: exposes a deterministic union and digest for parser generation.
@@ -30,6 +30,7 @@ const { SofistikDataProvider } = require("@lumine-code/sofistik-data");
 const data = new SofistikDataProvider();
 const keywords = data.forRelease("2026", "en");
 const aquaCommands = keywords.getModuleCommands("AQUA");
+const concreteForms = keywords.getCommandSchema("AQUA", "CONC").forms;
 ```
 
 `forRelease` returns `null` for a release or language absent from the committed data. Omitting a release selects the newest available dataset, and omitting a language selects English.

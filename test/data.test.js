@@ -10,6 +10,7 @@ const {
   getMetadata,
 } = require("../lib");
 const {
+  commandSlots,
   digest,
   projectCommandSchema,
   readSchema,
@@ -18,7 +19,7 @@ const {
 
 test("publishes one complete release and language matrix", () => {
   const metadata = getMetadata();
-  assert.equal(metadata.formatVersion, 1);
+  assert.equal(metadata.formatVersion, 2);
   assert.deepEqual(metadata.versions, [
     "2018",
     "2020",
@@ -31,6 +32,10 @@ test("publishes one complete release and language matrix", () => {
   assert.deepEqual(metadata.languages, ["de", "en"]);
   assert.match(metadata.schemaDigest, /^[a-f0-9]{64}$/);
   assert.match(metadata.grammarVocabularyDigest, /^[a-f0-9]{64}$/);
+  assert.deepEqual(metadata.allowedUnresolvedRedirects, []);
+  assert.ok(
+    Object.values(metadata.unresolvedRedirects).every((count) => count === 0),
+  );
 
   for (const version of metadata.versions) {
     for (const language of metadata.languages) {
@@ -131,13 +136,201 @@ test("resolves public executable module aliases", () => {
 test("exposes ordered slots and compact enum lookups", () => {
   const keywords = new SofistikDataProvider().forRelease("2026", "en");
   const schema = keywords.getCommandSchema("AQUA", "CONC");
-  assert.ok(schema.slots.length > 3);
-  assert.deepEqual(
-    schema.slots.map((slot) => slot.position),
-    schema.slots.map((_, index) => index + 1),
-  );
+  assert.ok(schema.forms[0].slots.length > 3);
+  for (const form of schema.forms) {
+    assert.deepEqual(
+      form.slots.map((slot) => slot.position),
+      form.slots.map((_, index) => index + 1),
+    );
+  }
   assert.ok(keywords.getCommandParams("AQUA", "CONC").includes("TYPE"));
   assert.ok(keywords.getParamEnums("AQUA", "CONC", "type").includes("C"));
+});
+
+test("preserves distinct command forms and removes exact duplicates", () => {
+  const data = new SofistikDataProvider();
+  const current = data.forRelease("2026", "en");
+  const previous = data.forRelease("2025", "en");
+  assert.deepEqual(
+    current
+      .getCommandSchema("BDK", "EIGE")
+      .forms.map((form) => form.slots.map((slot) => slot.name)),
+    [
+      ["TYPE", "NEIG", "LCB"],
+      ["BEAM", "LC", "TYPE", "HORD", "DNO", "ENO"],
+    ],
+  );
+  assert.equal(previous.getCommandSchema("BDK", "EIGE").forms.length, 1);
+
+  const cuts = data
+    .forRelease("2022", "en")
+    .getCommandSchema("TEXTILE", "CUTS");
+  assert.equal(cuts.forms.length, 1);
+  assert.equal(cuts.forms[0].slots.length, 9);
+});
+
+test("preserves the positional POIN contract in every release and language", () => {
+  const data = new SofistikDataProvider();
+  const expectedNames = {
+    de: [
+      "REF",
+      "NR",
+      null,
+      null,
+      "BEZ",
+      null,
+      null,
+      "PROJ",
+      "WIDE",
+      "NREF",
+      "TYP",
+      "P",
+      "X",
+      "Y",
+      "Z",
+    ],
+    en: [
+      "REF",
+      "NO",
+      null,
+      null,
+      "TITL",
+      null,
+      null,
+      "PROJ",
+      "WIDE",
+      "NREF",
+      "TYPE",
+      "P",
+      "X",
+      "Y",
+      "Z",
+    ],
+  };
+  const expectedKinds = [
+    "enum",
+    "literal",
+    "placeholder",
+    "placeholder",
+    "enum",
+    "placeholder",
+    "placeholder",
+    "enum",
+    "keyword",
+    "keyword",
+    "enum",
+    "keyword",
+    "literal",
+    "keyword",
+    "keyword",
+  ];
+
+  for (const version of data.getAvailableVersions()) {
+    for (const language of ["de", "en"]) {
+      const command = data
+        .forRelease(version, language)
+        .getCommandSchema("SOFILOAD", "POIN");
+      assert.equal(command.forms.length, 1, `${version}.${language}`);
+      const slots = command.forms[0].slots;
+      assert.deepEqual(
+        slots.map((slot) => slot.name),
+        expectedNames[language],
+        `${version}.${language}`,
+      );
+      assert.deepEqual(
+        slots.map((slot) => slot.kind),
+        expectedKinds,
+        `${version}.${language}`,
+      );
+      assert.deepEqual(
+        slots.map((slot) => slot.dataTypeCode),
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "1001",
+          null,
+          null,
+          "9999",
+          "1001",
+          "1001",
+          "1001",
+        ],
+        `${version}.${language}`,
+      );
+    }
+  }
+});
+
+test("extracts numeric, punctuated and NONE enum values without catalogue annotations", () => {
+  const data = new SofistikDataProvider();
+  const keywords = data.forRelease("2026", "en");
+  const enums = (moduleName, commandName, itemName) =>
+    keywords.getParamEnums(moduleName, commandName, itemName);
+
+  assert.ok(enums("AQUA", "CTRL", "LAY").includes("0"));
+  assert.ok(enums("AQUA", "CTRL", "LAY").includes("9"));
+  assert.ok(enums("AQUA", "CTRL", "DIST").includes("NONE"));
+  assert.ok(enums("SOFIMSHC", "GAXP", "IDS").includes("+"));
+  assert.ok(enums("SOFIMSHC", "GAXP", "IDS").includes("*"));
+  assert.ok(enums("SOFIMSHC", "GAXV", "TYPE").includes("D-"));
+  assert.ok(enums("SOFIMSHC", "GAXV", "TYPE").includes("D+"));
+  assert.ok(enums("SOFIMSHC", "GAXV", "TYPE").includes("D*"));
+  assert.ok(enums("SOFIMSHC", "SLNS", "REFT").includes(">FIX"));
+  assert.ok(enums("SOFIMSHC", "SLNS", "REFT").includes("+SAR"));
+  assert.ok(enums("SOFIMSHC", "SLNS", "REFT").includes("*SAR"));
+  assert.ok(enums("FOOTING", "TAB", "NO").includes("A6.1"));
+  assert.ok(enums("DYNA", "HIST", "TYPE").includes("U-X"));
+  assert.ok(enums("DYNA", "HIST", "TYPE").includes("PT/P"));
+  assert.ok(enums("AQB", "CAPA", "STAT").includes("(D)"));
+  assert.ok(enums("ELLA", "CALC", "PHI").includes("F18"));
+  assert.ok(enums("ELLA", "CALC", "PHI").includes("F19C"));
+  assert.equal(enums("DYNA", "HIST", "TYPE").includes("OBS"), false);
+  assert.deepEqual(enums("TEMPLATE", "TEST", "OPT1"), [
+    "=OPT1",
+    "FULL",
+    "NO",
+    "OBS",
+    "YES",
+  ]);
+
+  const legacyLink = data
+    .forRelease("2018", "en")
+    .getCommandSchema("HYDRA", "LINK");
+  assert.deepEqual(
+    legacyLink.forms[0].slots.map((slot) => slot.dataTypeCode),
+    [null, "9999", "9999", "9999", null],
+  );
+});
+
+test("maps letter selectors to high positional slots", () => {
+  const keywords = new SofistikDataProvider().forRelease("2026", "en");
+  const train = keywords.getCommandSchema("SOFILOAD", "TRAI").forms[0].slots;
+  assert.deepEqual(
+    train.slice(19, 21).map((slot) => ({
+      name: slot.name,
+      position: slot.position,
+      values: slot.enumValues,
+    })),
+    [
+      { name: "DIR", position: 20, values: ["B", "L", "N", "R"] },
+      { name: "DIRT", position: 21, values: ["B", "L", "N", "R"] },
+    ],
+  );
+
+  const group = keywords.getCommandSchema("ASE", "GRP").forms[0].slots;
+  assert.deepEqual(group[20].enumValues, ["HORI", "HORX", "HORY", "VERT"]);
+  assert.deepEqual(group[27].enumValues, ["ACTI", "FIX"]);
+
+  const quad = keywords.getCommandSchema("SOFIMSHA", "QUAD");
+  const redirected = commandSlots(quad).find((slot) => slot.name === "KR");
+  assert.deepEqual(redirected.enumRedirect, { command: "BEAM", item: "KR" });
+  assert.ok(redirected.enumValues.includes("RADI"));
 });
 
 test("preserves punctuation in directional and ratio item names", () => {
@@ -145,7 +338,7 @@ test("preserves punctuation in directional and ratio item names", () => {
   const names = (moduleName, commandName) =>
     keywords
       .getCommandSchema(moduleName, commandName)
-      .slots.map((slot) => slot.name);
+      .forms.flatMap((form) => form.slots.map((slot) => slot.name));
 
   assert.ok(names("AQUA", "SMAT").includes("P+"));
   assert.ok(names("AQUA", "SMAT").includes("MY-"));
@@ -163,6 +356,16 @@ test("exports a deterministic grammar vocabulary digest", () => {
   const semanticVocabulary = { ...vocabulary };
   delete semanticVocabulary.digest;
   assert.equal(digest(semanticVocabulary), vocabulary.digest);
+});
+
+test("projects every command form into the compact keyword union", () => {
+  const schema = readSchema("2026", "en");
+  const projected = projectCommandSchema(schema);
+  const command = schema.BDK.EIGE;
+  assert.equal(command.forms.length, 2);
+  assert.ok(commandSlots(command).some((slot) => slot.name === "BEAM"));
+  assert.ok(projected.BDK.EIGE.includes("BEAM"));
+  assert.ok(projected.BDK.EIGE.includes("NEIG"));
 });
 
 test("semantic digests do not depend on JSON line endings or key order", () => {

@@ -3,6 +3,7 @@ const path = require("path");
 
 const {
   buildGrammarVocabulary,
+  commandSlots,
   digest,
   projectCommandSchema,
   readJson,
@@ -18,6 +19,7 @@ const SLOT_KINDS = new Set([
   "comment",
   "placeholder",
 ]);
+const ENUM_VALUE_PATTERN = /^[A-Z0-9_().=*+/\->]+$/;
 
 function writeJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -54,74 +56,93 @@ function validateSchema(schema, filename) {
     for (const [commandName, command] of Object.entries(commands)) {
       if (
         !/^[A-Z][A-Z0-9_]*$/.test(commandName) ||
-        !Array.isArray(command.slots)
+        !Array.isArray(command.forms)
       ) {
         throw new Error(
           `${filename}: invalid command ${moduleName}.${commandName}`,
         );
       }
-      command.slots.forEach((slot, index) => {
-        const location = `${filename}: ${moduleName}.${commandName} slot ${index + 1}`;
-        if (slot.position !== index + 1)
-          throw new Error(`${location} has invalid position`);
-        if (slot.kind === "placeholder" && slot.name !== null) {
-          throw new Error(`${location} has a named placeholder`);
-        }
-        if (slot.kind !== "placeholder" && typeof slot.name !== "string") {
-          throw new Error(`${location} has an unnamed ${slot.kind} slot`);
-        }
-        if (slot.name !== null && !/^[A-Z][A-Z0-9_+/-]*$/.test(slot.name)) {
-          throw new Error(`${location} has invalid name`);
-        }
-        if (slot.name === "XXXX")
-          throw new Error(`${location} exposes a placeholder as an item`);
-        if (!SLOT_KINDS.has(slot.kind))
-          throw new Error(`${location} has invalid kind`);
-        if (slot.dataTypeCode !== null && !/^\d{4}$/.test(slot.dataTypeCode)) {
-          throw new Error(
-            `${location} has invalid data type ${slot.dataTypeCode}`,
-          );
-        }
-        if (!Array.isArray(slot.enumValues))
-          throw new Error(`${location} has invalid enums`);
-        if (
-          slot.enumValues.some(
-            (value) =>
-              typeof value !== "string" ||
-              value.length === 0 ||
-              value !== value.toUpperCase(),
-          ) ||
-          JSON.stringify(slot.enumValues) !==
-            JSON.stringify([...new Set(slot.enumValues)].sort())
-        ) {
-          throw new Error(`${location} has non-canonical enums`);
-        }
-        if (
-          slot.enumRedirect !== null &&
-          (typeof slot.enumRedirect !== "object" ||
-            typeof slot.enumRedirect.command !== "string" ||
-            typeof slot.enumRedirect.item !== "string" ||
-            !/^[A-Z][A-Z0-9_]*$/.test(slot.enumRedirect.command) ||
-            !/^[A-Z][A-Z0-9_]*$/.test(slot.enumRedirect.item))
-        ) {
-          throw new Error(`${location} has invalid enum redirect`);
-        }
-      });
-
-      for (const [index, slot] of command.slots.entries()) {
-        if (slot.enumRedirect === null) continue;
-        const targetCommand =
-          commands[slot.enumRedirect.command] ||
-          schema.BASIC?.[slot.enumRedirect.command];
-        const targetSlot = targetCommand?.slots.find(
-          (candidate) => candidate.name === slot.enumRedirect.item,
+      const fingerprints = command.forms.map(semanticJson);
+      if (new Set(fingerprints).size !== fingerprints.length) {
+        throw new Error(
+          `${filename}: ${moduleName}.${commandName} has duplicate forms`,
         );
-        if (!targetSlot) {
+      }
+      command.forms.forEach((form, formIndex) => {
+        if (!form || typeof form !== "object" || !Array.isArray(form.slots)) {
           throw new Error(
-            `${filename}: ${moduleName}.${commandName} slot ${index + 1} targets missing redirect ${slot.enumRedirect.command}.${slot.enumRedirect.item}`,
+            `${filename}: ${moduleName}.${commandName} form ${formIndex + 1} is invalid`,
           );
         }
-      }
+        form.slots.forEach((slot, slotIndex) => {
+          const location = `${filename}: ${moduleName}.${commandName} form ${formIndex + 1} slot ${slotIndex + 1}`;
+          if (slot.position !== slotIndex + 1)
+            throw new Error(`${location} has invalid position`);
+          if (slot.kind === "placeholder" && slot.name !== null) {
+            throw new Error(`${location} has a named placeholder`);
+          }
+          if (slot.kind !== "placeholder" && typeof slot.name !== "string") {
+            throw new Error(`${location} has an unnamed ${slot.kind} slot`);
+          }
+          if (slot.name !== null && !/^[A-Z][A-Z0-9_+/-]*$/.test(slot.name)) {
+            throw new Error(`${location} has invalid name`);
+          }
+          if (slot.name === "XXXX")
+            throw new Error(`${location} exposes a placeholder as an item`);
+          if (!SLOT_KINDS.has(slot.kind))
+            throw new Error(`${location} has invalid kind`);
+          if (
+            slot.dataTypeCode !== null &&
+            !/^\d{4}$/.test(slot.dataTypeCode)
+          ) {
+            throw new Error(
+              `${location} has invalid data type ${slot.dataTypeCode}`,
+            );
+          }
+          if (!Array.isArray(slot.enumValues))
+            throw new Error(`${location} has invalid enums`);
+          if (
+            slot.enumValues.some(
+              (value) =>
+                typeof value !== "string" ||
+                !ENUM_VALUE_PATTERN.test(value) ||
+                value !== value.toUpperCase() ||
+                value === "XXXX" ||
+                value === "OBS." ||
+                /^\.{2,}\d*$/.test(value),
+            ) ||
+            JSON.stringify(slot.enumValues) !==
+              JSON.stringify([...new Set(slot.enumValues)].sort())
+          ) {
+            throw new Error(`${location} has non-canonical enums`);
+          }
+          if (
+            slot.enumRedirect !== null &&
+            (typeof slot.enumRedirect !== "object" ||
+              typeof slot.enumRedirect.command !== "string" ||
+              typeof slot.enumRedirect.item !== "string" ||
+              !/^[A-Z][A-Z0-9_]*$/.test(slot.enumRedirect.command) ||
+              !/^[A-Z][A-Z0-9_]*$/.test(slot.enumRedirect.item))
+          ) {
+            throw new Error(`${location} has invalid enum redirect`);
+          }
+
+          if (slot.enumRedirect === null) return;
+          const targetCommand =
+            commands[slot.enumRedirect.command] ||
+            schema.BASIC?.[slot.enumRedirect.command];
+          const targetSlot = targetCommand
+            ? commandSlots(targetCommand).find(
+                (candidate) => candidate.name === slot.enumRedirect.item,
+              )
+            : null;
+          if (!targetSlot) {
+            throw new Error(
+              `${location} targets missing redirect ${slot.enumRedirect.command}.${slot.enumRedirect.item}`,
+            );
+          }
+        });
+      });
     }
   }
 }
@@ -133,6 +154,7 @@ function expandAllowedRedirects(entries) {
       language: entry.language,
       module: entry.module,
       command: entry.command,
+      form: entry.form,
       position: entry.position,
       item: entry.item,
       target: entry.target,
@@ -174,7 +196,7 @@ function unresolvedRedirectCount(schema) {
   let count = 0;
   for (const commands of Object.values(schema)) {
     for (const command of Object.values(commands)) {
-      for (const slot of command.slots) {
+      for (const slot of commandSlots(command)) {
         if (slot.enumRedirect !== null && slot.enumValues.length === 0)
           count += 1;
       }
@@ -187,17 +209,20 @@ function findUnresolvedRedirects(dataset) {
   const result = [];
   for (const [moduleName, commands] of Object.entries(dataset.schema)) {
     for (const [commandName, command] of Object.entries(commands)) {
-      for (const slot of command.slots) {
-        if (slot.enumRedirect !== null && slot.enumValues.length === 0) {
-          result.push({
-            version: dataset.version,
-            language: dataset.language,
-            module: moduleName,
-            command: commandName,
-            position: slot.position,
-            item: slot.name,
-            target: slot.enumRedirect,
-          });
+      for (const [formIndex, form] of command.forms.entries()) {
+        for (const slot of form.slots) {
+          if (slot.enumRedirect !== null && slot.enumValues.length === 0) {
+            result.push({
+              version: dataset.version,
+              language: dataset.language,
+              module: moduleName,
+              command: commandName,
+              form: formIndex + 1,
+              position: slot.position,
+              item: slot.name,
+              target: slot.enumRedirect,
+            });
+          }
         }
       }
     }
@@ -227,7 +252,7 @@ function generateData(root = repositoryRoot) {
   }
 
   const metadataBase = {
-    formatVersion: 1,
+    formatVersion: 2,
     versions,
     languages,
     sourceModuleAliases: existingMetadata.sourceModuleAliases || {},

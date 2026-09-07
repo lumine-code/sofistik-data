@@ -1,6 +1,6 @@
 # SOFiSTiK .err File Format
 
-This document describes the structure of SOFiSTiK `.err` files used to extract command definitions and parameters for syntax highlighting.
+This document describes the structure of SOFiSTiK `.err` files used to extract command definitions, alternative forms, parameters and enum values for language tooling.
 
 ## File Structure
 
@@ -24,6 +24,7 @@ All definition lines start with a prefix indicating language and line type:
 | `-2XY` | English enum values (X=param index, Y=continuation)  |
 | `-*XY` | Shared enum values (X=param index, Y=continuation)   |
 | `-*2`  | Fixed-column data type codes for the preceding slots |
+| `-*02` | Legacy spelling of a shared fixed-column type row    |
 
 ## Command Definition Lines
 
@@ -85,6 +86,8 @@ Parameters can span multiple lines. Continuation lines start with the language p
 
 Define allowed values for enum parameters.
 
+Enum values are whitespace-separated catalogue tokens, not identifiers. They may begin with digits or contain punctuation, for example `2D`, `2DSS`, `F19C`, `SIG+`, `U-X`, `PT/P`, `A6.1`, `>FIX`, `*SAR`, `(-)` and `****`. `NONE` is a valid enum value even though the same word acts as a placeholder in a parameter definition.
+
 ### Format
 
 ```
@@ -94,21 +97,17 @@ Define allowed values for enum parameters.
 Where:
 
 - `X` = Language: `1` (German), `2` (English), `*` (shared)
-- `Y` = Group identifier (usually `1`)
-- `Z` = Parameter POSITION (1-based) or enum index letter (K-Z)
+- `Y` = Group identifier (`1` for enum rows in the supported catalogues)
+- `Z` = Base-36 parameter position (1-based)
 
 Full lookup table for `Z`:
 
-| `Z` value | Meaning                                |
-| --------- | -------------------------------------- |
-| `1`–`9`   | Position 1–9                           |
-| `A`–`F`   | Position 10–15 (hex)                   |
-| `G`–`J`   | Position 16–19 (extended)              |
-| `K`–`Z`   | Enum parameter index (K=0, L=1, M=2 …) |
+| `Z` value | Meaning        |
+| --------- | -------------- |
+| `1`–`9`   | Position 1–9   |
+| `A`–`Z`   | Position 10–35 |
 
-Named positions with specific semantics: `B`=geometry sub-type, `C`=curve type, `E`=position/reference.
-
-### Position-Based Lookup (digits 1-9, A-J)
+### Position-Based Lookup
 
 The last digit indicates the **parameter position** (1-based) in the command definition:
 
@@ -122,14 +121,11 @@ The last digit indicates the **parameter position** (1-based) in the command def
 -*17     I II I_S II_S       → position 7 = TS gets [I, II, I_S, II_S]
 ```
 
-### Index-Based Lookup (letters K-Z)
-
-For commands with multiple enum parameters sharing similar values, letters K-Z indicate which **enum parameter** (by index):
+Letters continue the same positional sequence. In the following command, `DIR` is slot 20 (`K`) and `DIRT` is slot 21 (`L`):
 
 ```
--*1K     N    R    L    B   → Values for 1st enum param (K=0)
--*1L     N    R    L    B   → Values for 2nd enum param (L=1)
--*1M     X    Y    Z        → Values for 3rd enum param (M=2)
+-*1K     N    R    L    B   → Values for slot 20, DIR
+-*1L     N    R    L    B   → Values for slot 21, DIRT
 ```
 
 ### Redirect Lines
@@ -148,8 +144,10 @@ Format: `-> PARAM@COMMAND` — meaning "use enum values from `COMMAND`'s `PARAM`
 Lines containing these patterns are not actual enum values:
 
 - `....` - Placeholder markers
-- `F18`, `F19`, etc. - Version compatibility flags
+- `obs.` - Obsolete-value annotation (the undotted `obs` and `=NAME` tokens remain literal catalogue values)
 - `->` - Parsed separately as a cross-reference redirect (see above)
+
+Legacy control rows such as `-*310158` are not enum rows. Real enum rows in the supported catalogues use group `1`, for example `-*11`, `-211` or `-11K`.
 
 ## Parameter Naming
 
@@ -189,6 +187,12 @@ Some `.err` files contain "reference" commands - command names without parameter
 
 These indicate that the command is valid for this module, but its full definition (with parameters) is in `sofistik.err`. The `=` syntax distinguishes references from full definitions.
 
+Before shared definitions are hydrated, an explicit `=CMD` reference has `forms: []`, while a source definition without arguments has `forms: [{ "slots": [] }]`. Legacy catalogues also use bare argumentless `HEAD`/`KOPF`, `PAGE`/`SEIT` and `NORM` rows as implicit references; when BASIC provides a non-empty definition, those rows are hydrated in the same way as explicit references.
+
+## Alternative Command Forms
+
+Repeating a command definition starts another complete form; it does not append slots to the earlier definition. For example, the 2026 BDK catalogue defines two `EIGE` forms with different slot sequences. Exact duplicate forms, such as the repeated 2022 TEXTILE `CUTS` definition, are removed only after their slot types, enums and redirects have been resolved. Slot positions restart at 1 in every form.
+
 ## SOFISTIK Module (BASIC)
 
 The `sofistik.err` file contains two types of commands:
@@ -207,11 +211,11 @@ During extraction:
 The local pipeline copies licensed inputs with `0_copyerr.py`, extracts canonical schemas with `1_extract.py`, then installs and regenerates derived data with `3_merge.py`:
 
 1. Commands are matched by `-10`/`-20`/`-*0` prefix + command name
-2. Parameters are extracted as ordered slots with their type (enum/literal/keyword/comment/placeholder), without deduplicating repeated names
-3. Enum parameters are tracked for later value assignment
-4. Enum value lines assign values by parameter POSITION (not enum index)
+2. Every definition becomes a command form whose parameters are extracted as ordered slots with their type (enum/literal/keyword/comment/placeholder), without deduplicating repeated names
+3. Continuations, fixed-column types and enum rows enrich only the active form
+4. Enum value lines assign values by base-36 parameter position within the active form
 5. German (`-10`) and English (`-20`) are paired; shared (`-*0`) applies to both
 6. Fixed-column `-*2` rows attach four-character data type codes to their aligned slots
 7. Redirect chains are resolved after empty reference commands are filled from SOFISTIK definitions
 8. Single-module commands are removed from BASIC (moved to their target module)
-9. Canonical output is written to `schema/sofistik.{version}.{language}.json`; compact `commands/sofistik.{version}.{language}.json` indexes and both semantic digests are generated from those schemas
+9. Canonical `forms[].slots` output is written to `schema/sofistik.{version}.{language}.json`; compact command indexes and the grammar vocabulary are deterministic unions across all forms
