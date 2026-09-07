@@ -140,6 +140,20 @@ test("exposes ordered slots and compact enum lookups", () => {
   assert.ok(keywords.getParamEnums("AQUA", "CONC", "type").includes("C"));
 });
 
+test("preserves punctuation in directional and ratio item names", () => {
+  const keywords = new SofistikDataProvider().forRelease("2026", "en");
+  const names = (moduleName, commandName) =>
+    keywords
+      .getCommandSchema(moduleName, commandName)
+      .slots.map((slot) => slot.name);
+
+  assert.ok(names("AQUA", "SMAT").includes("P+"));
+  assert.ok(names("AQUA", "SMAT").includes("MY-"));
+  assert.ok(names("AQUA", "SHRW").includes("SZ+"));
+  assert.ok(names("SOFILOAD", "VOLU").includes("A/U"));
+  assert.ok(names("TENDON", "SYSP").includes("MUE-"));
+});
+
 test("exports a deterministic grammar vocabulary digest", () => {
   const metadata = getMetadata();
   const vocabulary = getGrammarVocabulary();

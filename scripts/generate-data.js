@@ -70,7 +70,7 @@ function validateSchema(schema, filename) {
         if (slot.kind !== "placeholder" && typeof slot.name !== "string") {
           throw new Error(`${location} has an unnamed ${slot.kind} slot`);
         }
-        if (slot.name !== null && !/^[A-Z][A-Z0-9_]*$/.test(slot.name)) {
+        if (slot.name !== null && !/^[A-Z][A-Z0-9_+/-]*$/.test(slot.name)) {
           throw new Error(`${location} has invalid name`);
         }
         if (slot.name === "XXXX")

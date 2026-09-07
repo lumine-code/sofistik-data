@@ -206,6 +206,19 @@ class ExtractorTests(unittest.TestCase):
             ],
         )
 
+    def test_preserves_directional_and_ratio_item_names(self):
+        slots = extractor.extract_param_slots("P+ P- MY+ MY- A/U MUE-")
+
+        self.assertEqual(
+            [slot["name"] for slot in slots],
+            ["P+", "P-", "MY+", "MY-", "A/U", "MUE-"],
+        )
+        prefixed = extractor.extract_param_slots('"P+ \'MY- !A/U')
+        self.assertEqual(
+            [(slot["name"], slot["kind"]) for slot in prefixed],
+            [("P+", "enum"), ("MY-", "literal"), ("A/U", "keyword")],
+        )
+
     def test_aligns_data_type_codes_by_source_column(self):
         slots = extractor.extract_param_slots('"OPT \'VAL  VAL2', start_column=8)
         line = "-*2" + " " * (slots[1]["_column"] - 3) + "9999"

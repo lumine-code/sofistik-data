@@ -42,9 +42,9 @@ REDIRECT_RE = re.compile(
 PARAM_RE = re.compile(
     r"(?:(?P<prefix>[\"'`=!])"
     r"(?:(?P<prefixed_placeholder>XXXX|NONE|\.{4})|"
-    r"(?P<prefixed_name>[A-Z][A-Z0-9_]{0,3})(?![A-Z0-9_])))|"
-    r"(?<![A-Z0-9_])(?:(?P<placeholder>XXXX|NONE|\.{4})|"
-    r"(?P<name>[A-Z][A-Z0-9_]{0,3})(?![A-Z0-9_]))",
+    r"(?P<prefixed_name>[A-Z][A-Z0-9_+/\-]{0,3})(?![A-Z0-9_+/\-])))|"
+    r"(?<![A-Z0-9_+/\-])(?:(?P<placeholder>XXXX|NONE|\.{4})|"
+    r"(?P<name>[A-Z][A-Z0-9_+/\-]{0,3})(?![A-Z0-9_+/\-]))",
     re.IGNORECASE,
 )
 

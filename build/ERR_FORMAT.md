@@ -154,7 +154,7 @@ Lines containing these patterns are not actual enum values:
 ## Parameter Naming
 
 - Parameters are 1-4 characters
-- May contain underscores (e.g., `ST_M`, `QU_M`)
+- May contain underscores, `+`, `-`, or `/` (e.g., `ST_M`, `P+`, `MUE-`, `A/U`)
 - `XXXX` and `....` are placeholders, not real parameters
 
 ## Complete Example

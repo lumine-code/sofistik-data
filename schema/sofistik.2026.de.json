@@ -2705,7 +2705,7 @@
         },
         {
           "position": 13,
-          "name": "RW",
+          "name": "RW-",
           "kind": "keyword",
           "dataTypeCode": "1026",
           "enumValues": [],
@@ -6921,7 +6921,7 @@
         },
         {
           "position": 5,
-          "name": "P",
+          "name": "P+",
           "kind": "keyword",
           "dataTypeCode": "1101",
           "enumValues": [],
@@ -6929,7 +6929,7 @@
         },
         {
           "position": 6,
-          "name": "P",
+          "name": "P-",
           "kind": "keyword",
           "dataTypeCode": "1101",
           "enumValues": [],
@@ -6937,7 +6937,7 @@
         },
         {
           "position": 7,
-          "name": "VY",
+          "name": "VY+",
           "kind": "keyword",
           "dataTypeCode": "1102",
           "enumValues": [],
@@ -6945,7 +6945,7 @@
         },
         {
           "position": 8,
-          "name": "VY",
+          "name": "VY-",
           "kind": "keyword",
           "dataTypeCode": "1102",
           "enumValues": [],
@@ -6953,7 +6953,7 @@
         },
         {
           "position": 9,
-          "name": "VZ",
+          "name": "VZ+",
           "kind": "keyword",
           "dataTypeCode": "1102",
           "enumValues": [],
@@ -6961,7 +6961,7 @@
         },
         {
           "position": 10,
-          "name": "VZ",
+          "name": "VZ-",
           "kind": "keyword",
           "dataTypeCode": "1102",
           "enumValues": [],
@@ -6985,7 +6985,7 @@
         },
         {
           "position": 13,
-          "name": "MY",
+          "name": "MY+",
           "kind": "keyword",
           "dataTypeCode": "1104",
           "enumValues": [],
@@ -6993,7 +6993,7 @@
         },
         {
           "position": 14,
-          "name": "MY",
+          "name": "MY-",
           "kind": "keyword",
           "dataTypeCode": "1104",
           "enumValues": [],
@@ -7001,7 +7001,7 @@
         },
         {
           "position": 15,
-          "name": "MZ",
+          "name": "MZ+",
           "kind": "keyword",
           "dataTypeCode": "1104",
           "enumValues": [],
@@ -7009,7 +7009,7 @@
         },
         {
           "position": 16,
-          "name": "MZ",
+          "name": "MZ-",
           "kind": "keyword",
           "dataTypeCode": "1104",
           "enumValues": [],
@@ -9703,7 +9703,7 @@
         },
         {
           "position": 5,
-          "name": "SZ",
+          "name": "SZ+",
           "kind": "keyword",
           "dataTypeCode": "1011",
           "enumValues": [],
@@ -9711,7 +9711,7 @@
         },
         {
           "position": 6,
-          "name": "SZ",
+          "name": "SZ-",
           "kind": "keyword",
           "dataTypeCode": "1011",
           "enumValues": [],
@@ -9775,7 +9775,7 @@
         },
         {
           "position": 14,
-          "name": "LZ",
+          "name": "LZ+",
           "kind": "keyword",
           "dataTypeCode": "1011",
           "enumValues": [],
@@ -9783,7 +9783,7 @@
         },
         {
           "position": 15,
-          "name": "AZ",
+          "name": "AZ+",
           "kind": "keyword",
           "dataTypeCode": null,
           "enumValues": [],
@@ -9791,7 +9791,7 @@
         },
         {
           "position": 16,
-          "name": "DZ",
+          "name": "DZ+",
           "kind": "keyword",
           "dataTypeCode": "1023",
           "enumValues": [],
@@ -9799,7 +9799,7 @@
         },
         {
           "position": 17,
-          "name": "RZ",
+          "name": "RZ+",
           "kind": "keyword",
           "dataTypeCode": "1020",
           "enumValues": [],
@@ -9807,7 +9807,7 @@
         },
         {
           "position": 18,
-          "name": "LZ",
+          "name": "LZ-",
           "kind": "keyword",
           "dataTypeCode": "1011",
           "enumValues": [],
@@ -9815,7 +9815,7 @@
         },
         {
           "position": 19,
-          "name": "AZ",
+          "name": "AZ-",
           "kind": "keyword",
           "dataTypeCode": null,
           "enumValues": [],
@@ -9823,7 +9823,7 @@
         },
         {
           "position": 20,
-          "name": "DZ",
+          "name": "DZ-",
           "kind": "keyword",
           "dataTypeCode": "1023",
           "enumValues": [],
@@ -9831,7 +9831,7 @@
         },
         {
           "position": 21,
-          "name": "RZ",
+          "name": "RZ-",
           "kind": "keyword",
           "dataTypeCode": "1020",
           "enumValues": [],
@@ -19794,7 +19794,7 @@
         },
         {
           "position": 13,
-          "name": "RW",
+          "name": "RW-",
           "kind": "keyword",
           "dataTypeCode": "1026",
           "enumValues": [],
@@ -59317,7 +59317,7 @@
         },
         {
           "position": 10,
-          "name": "A",
+          "name": "A/U",
           "kind": "keyword",
           "dataTypeCode": null,
           "enumValues": [],
@@ -59325,8 +59325,8 @@
         },
         {
           "position": 11,
-          "name": "U",
-          "kind": "keyword",
+          "name": "TYP",
+          "kind": "enum",
           "dataTypeCode": null,
           "enumValues": [
             "CFDP",
@@ -59437,17 +59437,17 @@
         },
         {
           "position": 12,
-          "name": "TYP",
-          "kind": "enum",
-          "dataTypeCode": null,
+          "name": "P",
+          "kind": "keyword",
+          "dataTypeCode": "9999",
           "enumValues": [],
           "enumRedirect": null
         },
         {
           "position": 13,
-          "name": "P",
-          "kind": "keyword",
-          "dataTypeCode": "9999",
+          "name": "X",
+          "kind": "literal",
+          "dataTypeCode": "1001",
           "enumValues": ["GPT", "S", "SPT", "SX"],
           "enumRedirect": {
             "command": "LINE",
@@ -59456,14 +59456,6 @@
         },
         {
           "position": 14,
-          "name": "X",
-          "kind": "literal",
-          "dataTypeCode": "1001",
-          "enumValues": [],
-          "enumRedirect": null
-        },
-        {
-          "position": 15,
           "name": "Y",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59471,7 +59463,7 @@
           "enumRedirect": null
         },
         {
-          "position": 16,
+          "position": 15,
           "name": "Z",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59479,10 +59471,18 @@
           "enumRedirect": null
         },
         {
-          "position": 17,
+          "position": 16,
           "name": "P1",
           "kind": "keyword",
           "dataTypeCode": "9999",
+          "enumValues": [],
+          "enumRedirect": null
+        },
+        {
+          "position": 17,
+          "name": "X1",
+          "kind": "literal",
+          "dataTypeCode": "1001",
           "enumValues": [
             "DDXY",
             "DDYZ",
@@ -59502,14 +59502,6 @@
         },
         {
           "position": 18,
-          "name": "X1",
-          "kind": "literal",
-          "dataTypeCode": "1001",
-          "enumValues": [],
-          "enumRedirect": null
-        },
-        {
-          "position": 19,
           "name": "Y1",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59517,7 +59509,7 @@
           "enumRedirect": null
         },
         {
-          "position": 20,
+          "position": 19,
           "name": "Z1",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59525,7 +59517,7 @@
           "enumRedirect": null
         },
         {
-          "position": 21,
+          "position": 20,
           "name": "P2",
           "kind": "keyword",
           "dataTypeCode": "9999",
@@ -59533,7 +59525,7 @@
           "enumRedirect": null
         },
         {
-          "position": 22,
+          "position": 21,
           "name": "X2",
           "kind": "literal",
           "dataTypeCode": "1001",
@@ -59541,7 +59533,7 @@
           "enumRedirect": null
         },
         {
-          "position": 23,
+          "position": 22,
           "name": "Y2",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59549,7 +59541,7 @@
           "enumRedirect": null
         },
         {
-          "position": 24,
+          "position": 23,
           "name": "Z2",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59557,7 +59549,7 @@
           "enumRedirect": null
         },
         {
-          "position": 25,
+          "position": 24,
           "name": "P3",
           "kind": "keyword",
           "dataTypeCode": "9999",
@@ -59565,7 +59557,7 @@
           "enumRedirect": null
         },
         {
-          "position": 26,
+          "position": 25,
           "name": "X3",
           "kind": "literal",
           "dataTypeCode": "1001",
@@ -59573,7 +59565,7 @@
           "enumRedirect": null
         },
         {
-          "position": 27,
+          "position": 26,
           "name": "Y3",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59581,7 +59573,7 @@
           "enumRedirect": null
         },
         {
-          "position": 28,
+          "position": 27,
           "name": "Z3",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59589,7 +59581,7 @@
           "enumRedirect": null
         },
         {
-          "position": 29,
+          "position": 28,
           "name": "P4",
           "kind": "keyword",
           "dataTypeCode": "9999",
@@ -59597,7 +59589,7 @@
           "enumRedirect": null
         },
         {
-          "position": 30,
+          "position": 29,
           "name": "X4",
           "kind": "literal",
           "dataTypeCode": "1001",
@@ -59605,7 +59597,7 @@
           "enumRedirect": null
         },
         {
-          "position": 31,
+          "position": 30,
           "name": "Y4",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59613,7 +59605,7 @@
           "enumRedirect": null
         },
         {
-          "position": 32,
+          "position": 31,
           "name": "Z4",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59621,7 +59613,7 @@
           "enumRedirect": null
         },
         {
-          "position": 33,
+          "position": 32,
           "name": "P5",
           "kind": "keyword",
           "dataTypeCode": "9999",
@@ -59629,7 +59621,7 @@
           "enumRedirect": null
         },
         {
-          "position": 34,
+          "position": 33,
           "name": "X5",
           "kind": "literal",
           "dataTypeCode": "1001",
@@ -59637,7 +59629,7 @@
           "enumRedirect": null
         },
         {
-          "position": 35,
+          "position": 34,
           "name": "Y5",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -59645,7 +59637,7 @@
           "enumRedirect": null
         },
         {
-          "position": 36,
+          "position": 35,
           "name": "Z5",
           "kind": "keyword",
           "dataTypeCode": "1001",
@@ -79268,7 +79260,7 @@
         },
         {
           "position": 13,
-          "name": "RW",
+          "name": "RW-",
           "kind": "keyword",
           "dataTypeCode": "1026",
           "enumValues": [],
@@ -82003,7 +81995,7 @@
         },
         {
           "position": 13,
-          "name": "RW",
+          "name": "RW-",
           "kind": "keyword",
           "dataTypeCode": null,
           "enumValues": [],
@@ -84725,7 +84717,7 @@
         },
         {
           "position": 13,
-          "name": "MUE",
+          "name": "MUE-",
           "kind": "keyword",
           "dataTypeCode": null,
           "enumValues": [],
