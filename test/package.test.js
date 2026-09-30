@@ -52,6 +52,7 @@ test("packs and installs only the supported public library", () => {
     )[0];
     const packedPaths = pack.files.map((file) => file.path);
     assert.ok(packedPaths.includes("lib/index.js"));
+    assert.ok(packedPaths.includes("lib/project-target.js"));
     assert.ok(packedPaths.includes("schema/meta.json"));
     assert.ok(packedPaths.includes("commands/sofistik.2026.en.json"));
     assert.equal(
@@ -82,6 +83,14 @@ test("packs and installs only the supported public library", () => {
       path.join(consumer, "node_modules", "@lumine-code", "sofistik-data"),
     );
     assert.equal(installed.getMetadata().formatVersion, 2);
+    assert.deepEqual(
+      installed.resolveProjectTarget({ definitionText: "SOF_VERSION = 2024" }),
+      {
+        version: "2024",
+        source: "definition",
+        dataSupported: true,
+      },
+    );
     assert.ok(
       installed
         .provider()

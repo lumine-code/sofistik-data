@@ -11,6 +11,7 @@ Provides versioned SOFiSTiK CADINP command and schema data.
 - **Module identities**: distinguishes source catalogue names from public executable aliases.
 - **Tree-sitter vocabulary**: exposes a deterministic union and digest for parser generation.
 - **Lazy API**: loads only the release and language a consumer requests.
+- **Project target**: selects one release from a root definition, the user setting, or the newest bundled dataset without requiring an installation.
 
 ## Installation
 
@@ -34,6 +35,8 @@ const concreteForms = keywords.getCommandSchema("AQUA", "CONC").forms;
 ```
 
 `forRelease` returns `null` for a release or language absent from the committed data. Omitting a release selects the newest available dataset, and omitting a language selects English.
+
+`resolveProjectTarget({ definitionText, defaultVersion })` selects the year declared by `SOF_VERSION = YYYY` in the project's root `sofistik.def`, then the configured fallback year, then the newest bundled dataset. Empty and `Auto` settings fall through. It returns `{ version, source, dataSupported }`, where `source` is `definition`, `setting`, or `bundled`. An unsupported explicit year stays selected with `dataSupported: false`; installed releases never influence the result. The helper accepts text and performs no filesystem or editor access, so the language server and environment service share the same policy while reading their own project roots.
 
 ## Building
 
