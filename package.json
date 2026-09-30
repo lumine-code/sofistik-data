@@ -48,5 +48,8 @@
     "eslint-plugin-n": "^18.4.0",
     "globals": "^17.12.0",
     "prettier": "^3.9.9"
+  },
+  "dependencies": {
+    "@lumine-code/sofistik-env": "github:lumine-code/sofistik-env#63a6dab325fd658e50b232c977ad917a4adb15dc"
   }
 }

@@ -11,7 +11,7 @@ Provides versioned SOFiSTiK CADINP command and schema data.
 - **Module identities**: distinguishes source catalogue names from public executable aliases.
 - **Tree-sitter vocabulary**: exposes a deterministic union and digest for parser generation.
 - **Lazy API**: loads only the release and language a consumer requests.
-- **Environment resolver**: reads the requested file and project definitions, finds installed releases, and selects the exact matching keyword data without an editor dependency.
+- **Environment resolver**: extends the lightweight sofistik-env library with exact keyword selection and an offline dataset fallback.
 
 ## Installation
 
@@ -38,11 +38,11 @@ const concreteForms = keywords.getCommandSchema("AQUA", "CONC").forms;
 
 `resolveProjectTarget({ definitionText, defaultVersion })` remains available as a pure helper for callers that deliberately select from a definition, an explicit fallback, and bundled data. It returns `{ version, source, dataSupported }`, with `source` equal to `definition`, `setting`, or `bundled`. Empty and `Auto` fallbacks are ignored; unsupported selected years remain exact. Runtime consumers use the environment resolver below to include installation discovery.
 
-`SofistikEnvironmentResolver` is the shared resolver for language tooling, native application launches and CDB readers. It uses an explicit caller year, `SOF_VERSION` from the project's `sofistik.def`, the newest actually installed release, then the newest bundled dataset. Its fixed installation root is `C:\Program Files\SOFiSTiK`; installation paths are `<root>/<year>/SOFiSTiK <year>`. Missing installations are reported with `installed: false`, while unsupported selected years stay exact with `dataSupported: false`. `getKeywordContext(context)` uses that exact year and returns `null` when no dataset exists.
+`SofistikEnvironmentResolver` extends [sofistik-env](https://github.com/lumine-code/sofistik-env) for consumers that need keyword data. Native consumers that only need installation discovery can use that small library directly. It uses an explicit caller year, `SOF_VERSION` from the project's `sofistik.def`, the newest actually installed release, then the newest bundled dataset. Its fixed installation root is `C:\Program Files\SOFiSTiK`; installation paths are `<root>/<year>/SOFiSTiK <year>`. Missing installations are reported with `installed: false`, while unsupported selected years stay exact with `dataSupported: false`. `getKeywordContext(context)` uses that exact year and returns `null` when no dataset exists.
 
 `resolve({ projectPath, filePath, version, language, edition })` returns `{ version, language, edition, root, installPath, installed, dataSupported, versionSource }`. Every argument is optional. `versionSource` is `explicit`, `definition`, `installed`, or `bundled`. A supplied `projectPath` selects only its root definition for every file in that project; otherwise a saved file uses its adjacent definition, and an untitled context uses the working directory. Source files and their headers are never read for detection. Explicit `language` wins over `SOF_LANGUAGE = EN` or `DE`, then English. Explicit `edition` wins over `SOF_EDITION = professional` or `educational`, then Professional. These definition keys are integration declarations, not a claim that SOFiSTiK itself interprets them.
 
-Definitions are read fresh on each resolution. The installed-release list is cached for at most five seconds; `clearCache()` invalidates it immediately. The resolver accepts injectable filesystem functions, an installation root and clock through its constructor for testing. It neither loads a native interface nor executes a calculation.
+Definitions are read fresh on each resolution. Installed releases must contain a calculation executable or a CDB interface; an empty leftover directory is ignored. The installed-release list is cached for at most five seconds; `clearCache()` invalidates it immediately. The resolver accepts injectable filesystem functions, an installation root and clock through its constructor for testing. It neither loads a native interface nor executes a calculation.
 
 ## Building
 

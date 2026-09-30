@@ -146,11 +146,15 @@ test("uses only the supplied root definition and uses adjacent definitions only 
 
 test("chooses the latest actually installed release before newest data", (t) => {
   const { projectPath, resolver, root } = fixture(t);
-  for (const version of ["2022", "2024"])
-    fs.mkdirSync(path.join(root, version, `SOFiSTiK ${version}`), {
+  for (const version of ["2022", "2024"]) {
+    const install = path.join(root, version, `SOFiSTiK ${version}`);
+    fs.mkdirSync(install, {
       recursive: true,
     });
+    fs.writeFileSync(path.join(install, "sps.exe"), "fixture");
+  }
   fs.mkdirSync(path.join(root, "2025"));
+  fs.mkdirSync(path.join(root, "2027", "SOFiSTiK 2027"), { recursive: true });
   const resolved = resolver.resolve({ projectPath });
   assert.equal(resolved.version, "2024");
   assert.equal(resolved.versionSource, "installed");
