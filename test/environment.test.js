@@ -116,32 +116,73 @@ test("never reads a source file or uses supplied header text for version or lang
   );
 });
 
-test("uses only the supplied root definition and uses adjacent definitions only without a root", (t) => {
+test("selects the adjacent definition for each file despite a supplied workspace root", (t) => {
   const { projectPath, resolver } = fixture(t);
-  const child = path.join(projectPath, "child");
-  fs.mkdirSync(child);
-  const filePath = path.join(child, "model.cdb");
+  const first = path.join(projectPath, "first");
+  const second = path.join(projectPath, "second");
+  fs.mkdirSync(first);
+  fs.mkdirSync(second);
   fs.writeFileSync(
     path.join(projectPath, "sofistik.def"),
+    "SOF_VERSION = 2099\nSOF_LANGUAGE = DE\n",
+  );
+  fs.writeFileSync(
+    path.join(first, "sofistik.def"),
     "SOF_VERSION = 2024\nSOF_LANGUAGE = EN\n",
   );
   fs.writeFileSync(
-    path.join(child, "sofistik.def"),
+    path.join(second, "sofistik.def"),
     "SOF_VERSION = 2023\nSOF_LANGUAGE = DE\nSOF_EDITION = educational\n",
   );
-  const resolved = resolver.resolve({ projectPath, filePath });
-  assert.equal(resolved.version, "2024");
+  for (const [directory, version, language, edition] of [
+    [first, "2024", "en", "professional"],
+    [second, "2023", "de", "educational"],
+  ]) {
+    const context = {
+      projectPath,
+      filePath: path.join(directory, "model.dat"),
+    };
+    const resolved = resolver.resolve(context);
+    assert.equal(resolved.version, version);
+    assert.equal(resolved.versionSource, "definition");
+    assert.equal(resolved.language, language);
+    assert.equal(resolved.edition, edition);
+    assert.equal(resolved.dataSupported, true);
+    const keywords = resolver.getKeywordContext(context);
+    assert.equal(keywords.getVersion(), version);
+    assert.equal(keywords.getLanguage(), language);
+  }
+});
+
+test("ignores parent definitions when a file has no adjacent definition", (t) => {
+  const { projectPath, resolver } = fixture(t);
+  const child = path.join(projectPath, "child");
+  fs.mkdirSync(child);
+  fs.writeFileSync(
+    path.join(projectPath, "sofistik.def"),
+    "SOF_VERSION = 2023\nSOF_LANGUAGE = DE\nSOF_EDITION = educational\n",
+  );
+  const context = { projectPath, filePath: path.join(child, "model.dat") };
+  const resolved = resolver.resolve(context);
+  assert.equal(resolved.version, getMetadata().versions.at(-1));
+  assert.equal(resolved.versionSource, "bundled");
   assert.equal(resolved.language, "en");
   assert.equal(resolved.edition, "professional");
-  fs.unlinkSync(path.join(projectPath, "sofistik.def"));
+  assert.equal(resolver.getKeywordContext(context).getLanguage(), "en");
+});
+
+test("accepts an explicit directory context only when no file path is supplied", (t) => {
+  const { projectPath, resolver, filePath } = fixture(t);
+  const other = path.join(projectPath, "other");
+  fs.mkdirSync(other);
+  fs.writeFileSync(path.join(other, "sofistik.def"), "SOF_VERSION = 2023\n");
+  assert.equal(resolver.resolve({ directoryPath: other }).version, "2023");
+  assert.equal(resolver.resolve({ projectPath: other }).version, "2023");
   assert.equal(
-    resolver.resolve({ projectPath, filePath }).versionSource,
+    resolver.resolve({ directoryPath: other, projectPath: other, filePath })
+      .versionSource,
     "bundled",
   );
-  const adjacent = resolver.resolve({ filePath });
-  assert.equal(adjacent.version, "2023");
-  assert.equal(adjacent.language, "de");
-  assert.equal(adjacent.edition, "educational");
 });
 
 test("chooses the latest actually installed release before newest data", (t) => {
@@ -172,19 +213,23 @@ test("chooses the latest actually installed release before newest data", (t) => 
   );
 });
 
-test("preserves unsupported explicit or declared years without substitution", (t) => {
+test("preserves unsupported adjacent or explicit years without substitution", (t) => {
   const { projectPath, resolver } = fixture(t);
+  const child = path.join(projectPath, "child");
+  fs.mkdirSync(child);
+  const context = { projectPath, filePath: path.join(child, "model.dat") };
   fs.writeFileSync(
     path.join(projectPath, "sofistik.def"),
-    "SOF_VERSION = 2099\n",
+    "SOF_VERSION = 2026\n",
   );
-  const resolved = resolver.resolve({ projectPath });
+  fs.writeFileSync(path.join(child, "sofistik.def"), "SOF_VERSION = 2099\n");
+  const resolved = resolver.resolve(context);
   assert.equal(resolved.version, "2099");
   assert.equal(resolved.versionSource, "definition");
   assert.equal(resolved.dataSupported, false);
-  assert.equal(resolver.getKeywordContext({ projectPath }), null);
+  assert.equal(resolver.getKeywordContext(context), null);
   assert.equal(
-    resolver.getKeywordContext({ projectPath, version: "2019" }),
+    resolver.getKeywordContext({ ...context, version: "2019" }),
     null,
   );
 });
